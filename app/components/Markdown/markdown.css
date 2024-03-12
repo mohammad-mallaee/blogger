@@ -47,16 +47,20 @@ code[data-line-numbers-max-digits="3"]>[data-line]::before {
     @apply pt-8 opacity-60 dark:opacity-10;
 }
 
+.markdown strong {
+    @apply font-[500]
+}
+
 .markdown h2 {
-    @apply mt-2 pb-5 text-3xl font-bold;
+    @apply mt-2 pb-5 text-3xl font-normal;
 }
 
 .markdown h3 {
-    @apply mt-2 pb-4 text-2xl font-bold;
+    @apply mt-2 pb-4 text-2xl font-normal;
 }
 
 .markdown h4 {
-    @apply mt-2 pb-3 text-xl font-bold;
+    @apply mt-2 pb-3 text-xl font-normal;
 }
 
 .markdown :not(pre)>code {
@@ -128,6 +132,7 @@ ol {
 
 .markdown li {
     margin-bottom: 0.3rem;
+    font-weight: 350;
 }
 
 .markdown img {

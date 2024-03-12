@@ -9,7 +9,12 @@
 body {
   width: 100%;
   height: 100%;
-  font-family: 'Lexend';
+  font-family: 'Lexend Variable';
+  font-weight: 300;
+}
+
+h1 {
+  font-weight:350;
 }
 
 img {

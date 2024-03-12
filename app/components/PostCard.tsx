@@ -10,8 +10,8 @@ const PostCard = ({ post }: { post: PostData }) => {
       {post.image &&
         <img src={post.image} alt={post.title} className='rounded-sm w-full mb-3 aspect-[18/9.5]' />
       }
-      <div className={`text-[24px] sm:text-[28px] font-medium group-hover:text-[--primary]`}>{post.title}</div>
-      <div className='text-[--on-surface-variant] text-[13px] sm:text-sm'>
+      <div className={`text-[24px] sm:text-[28px] font-normal group-hover:text-[--primary]`}>{post.title}</div>
+      <div className='text-[--on-surface-variant] text-[13px] sm:text-sm font-normal'>
         {new Date(post.date || "").toLocaleDateString(getMdLanguage(post), {
           day: "numeric",
           month: "long",
