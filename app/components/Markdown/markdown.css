@@ -48,7 +48,7 @@ code[data-line-numbers-max-digits="3"]>[data-line]::before {
 }
 
 .markdown strong {
-    @apply font-[500]
+    @apply font-semibold
 }
 
 .markdown h2 {
@@ -131,8 +131,7 @@ ol {
 }
 
 .markdown li {
-    margin-bottom: 0.3rem;
-    font-weight: 350;
+    @apply font-light mb-1;
 }
 
 .markdown img {
