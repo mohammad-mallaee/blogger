@@ -9,7 +9,7 @@ This is a blog template ( maybe a little more ), which you can spin up and write
 - **And more!**
 
 ## Preview
-You can see the [demo website](https://demo-blogger.netlify.app) and see if you like it.
+You can see the [demo website](https://demo-blogger.onrender.com) and see if you like it.
 
 ## Deployment
 
@@ -25,4 +25,4 @@ Use this button and deploy your blog on netlify with one click
 
 
 ## Guides And Tutorials
-You can look through guides and tutorials in the [demo app](https://demo-blogger.netlify.app).
+You can look through guides and tutorials in the [demo app](https://demo-blogger.onrender.com).
