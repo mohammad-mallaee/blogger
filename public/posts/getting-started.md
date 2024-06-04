@@ -60,7 +60,7 @@ const config: Config = {
 }
 ```
 
-Not that you can write author like this too if you don't want to use the url:
+Note that you can write author like this too if you don't want to use the url:
 
 ```ts {4}
 const config: Config = {

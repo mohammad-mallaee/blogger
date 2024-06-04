@@ -16,7 +16,7 @@ Some of them change your life a bit, and some of them turn your whole story in a
 
 I created this template (or maybe a little more than a template) for those who want a simple, beautiful blog (with some features too, obviously) that is easy to deploy, write in, and keep all their data for themselves.
 
-Get Started
+### Get Started
 Here are the steps you need to take to have your own blog and start writing:
 
 - Clone or fork the repository
@@ -24,6 +24,6 @@ Here are the steps you need to take to have your own blog and start writing:
 - Create your first article or post
 - Deploy it wherever you want
 
-You can read through the getting started: /posts/getting-started post for a step-by-step guide.
+You can read through the [getting started](/posts/getting-started) post for a step-by-step guide.
 
 Good luck!
