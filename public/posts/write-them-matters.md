@@ -40,7 +40,7 @@ const config: Config = {
 export default config;
 ```
 
-You've used first three settings in the last post ([getting started](/posts/getting-started)) so I'll explain other settings.
+You've used first three settings in the last post ([getting started](/posts/getting-started)), so I'll explain other settings.
 
 **Theme:** This setting controls the overall visual style of your blog and accepts three options: `auto`, `dark`, or `light`.
 
@@ -60,7 +60,7 @@ Now that you configured your blog it's time to start writing (the fun part).
 
 If you're new to markdown, I recommend this brief crash course: [Markdown Crash Course](https://blog.webdevsimplified.com/2023-06/markdown-crash-course/)
 
-Blogger utilizes "front matter" for post metadata, with the only mandatory field being the title. Your markdown files will typically resemble this structure:
+**Blogger** utilizes "front matter" for post metadata, with the only mandatory field being the title. Your markdown files will typically resemble this structure:
 
 ```
 ---
@@ -77,9 +77,9 @@ Within this front matter, you can override settings like `lang`, `direction (dir
 You can write html in your markdown files too, they will compile without additional configuration.
 
 ```html
-<p className="text-yellow-500">I'm an html tag</p>
+<p className="text-orange-500">I'm an html tag</p>
 ```
-<p className="text-yellow-500">I'm an html tag</p>
+<p className="text-orange-500">I'm an html tag</p>
 
 You may have noticed that I used tailwind to style the element :)
 
