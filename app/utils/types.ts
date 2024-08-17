@@ -54,13 +54,6 @@ export type Config = {
     },
     content_entry: string,
     lang: string,
-    explorer: {
-        enable: boolean,
-        empty_dirs: boolean,
-        size: "default" | "minimal" | "compact",
-        pagination: boolean,
-        posts_per_page: number | "all"
-    },
     posts_list: {
         size: "default" | "minimal" | "compact",
         pagination: boolean,

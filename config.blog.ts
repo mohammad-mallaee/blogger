@@ -19,13 +19,6 @@ const config: Config = {
     lang: 'en',
     direction: 'ltr',
     content_entry: "./public",
-    explorer: {
-        enable: true,
-        empty_dirs: true,
-        size: "default",
-        pagination: false,
-        posts_per_page: "all"
-    },
     posts_list: {
         size: "default",
         pagination: false,
