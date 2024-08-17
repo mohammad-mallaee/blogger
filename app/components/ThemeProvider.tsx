@@ -1,6 +1,7 @@
 'use client'
 import { ReactNode, useEffect, useState } from 'react'
 import config from '@/config.blog'
+import Header from './Header'
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
@@ -23,11 +24,11 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
     }
   }
 
-
   return (
     <div id="theme-provider"
       className='flex flex-col items-center gap-3 sm:gap-6 bg-[--background] text-[--on-background]'
       data-theme={theme}>
+      <Header theme={theme} setTheme={setTheme}/>
       {children}
     </div>
   )

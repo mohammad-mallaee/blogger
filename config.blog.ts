@@ -4,16 +4,35 @@ const config: Config = {
     description: 'Your favorite blog template',
     author: { name: 'Mohammad Mallaee', url: 'https://github.com/mohammad-mallaee' },
     theme: 'auto',
-    navLinks: [
-        {
-            name: 'About',
-            href: '/pages/about'
-        }
-    ],
+    logo: "/logo.png",
+    header: {
+        nav_links: [
+            {
+                name: 'About',
+                href: '/about'
+            }
+        ],
+        blog_name: true,
+        logo: true,
+        theme_toggle: true,
+    },
     lang: 'en',
     direction: 'ltr',
-    posts_dir: './public/posts',
-    pages_dir: './public/pages',
+    content_entry: "./public",
+    explorer: {
+        enable: true,
+        empty_dirs: true,
+        size: "default",
+        pagination: false,
+        posts_per_page: "all"
+    },
+    posts_list: {
+        size: "default",
+        pagination: false,
+        posts_per_page: "all",
+        path: "",
+        recursive: true
+    },
     // These are default values for metadata base. If you have your domain,
     // you can either set it in environment variables or set it here.
     // These will be used for open graph images (sharing preview).

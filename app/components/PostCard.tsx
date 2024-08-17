@@ -1,12 +1,12 @@
 import Link from "next/link"
 import { PostData } from "../utils/types"
-import { getMdDirection, getMdLanguage } from "../actions/getMdProperties"
+import { getMdDirection, getMdLanguage } from "../actions/mdProperties"
 
 const PostCard = ({ post }: { post: PostData }) => {
   return (
     <Link className='group flex px-1 py-4 rounded-[4px] flex-col hover:scale-[1.01] ease-in-out transition-transform bg-[--surface] text-[--on-surface] border-[--outline]'
       style={{ direction: getMdDirection(post) }}
-      key={post.slug} href={'/posts/' + post.slug}>
+      key={post.slug} href={post.slug}>
       {post.image &&
         <img src={post.image} alt={post.title} className='rounded-sm w-full mb-3 aspect-[18/9.5]' />
       }

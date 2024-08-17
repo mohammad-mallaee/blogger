@@ -24,6 +24,7 @@ export function getMdAuthors(data: PostData) {
     else if (config.authors)
         return config.authors
     else return ""
+<<<<<<< Updated upstream:app/actions/getMdProperties.ts
 }import { Direction, PostData } from "../utils/types"
 import config from "../../config.blog"
 
@@ -50,4 +51,16 @@ export function getMdAuthors(data: PostData) {
     else if (config.authors)
         return config.authors
     else return ""
+=======
+}
+
+export function getMdPostsList(data: PostData) {
+    if (!data.posts_list) {
+        return false
+    }
+    if (data.posts_list === true) {
+        return config.posts_list
+    }
+    return { ...config.posts_list, ...data.posts_list }
+>>>>>>> Stashed changes:app/actions/mdProperties.ts
 }

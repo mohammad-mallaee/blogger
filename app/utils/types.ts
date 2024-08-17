@@ -1,17 +1,23 @@
 export type PostData = {
     title: string,
+    show_title?: boolean,
+    slug: string,
     date?: string,
     dir?: Direction,
     lang?: string,
     author?: Author,
     authors?: Author[],
     image?: string,
-    spoiler ?: string,
+    spoiler?: string,
     keywords?: string,
-
-
-    slug?: string,
-    page?: string
+    tags?: string
+    posts_list: boolean | {
+        size?: "default" | "minimal" | "compact",
+        pagination?: boolean,
+        posts_per_page?: number | "all",
+        recursive?: boolean
+        path?: string
+    }
 }
 
 export enum Theme {
@@ -34,14 +40,33 @@ export type NavLink = {
 
 export type Config = {
     blog_name: string,
+    description: string,
     author?: string | Author,
     authors?: Author[],
+    theme: 'light' | 'dark' | 'auto',
     direction: Direction,
-    posts_dir: string,
-    pages_dir: string,
+    logo: string,
+    header: {
+        logo: boolean,
+        blog_name: boolean,
+        theme_toggle: boolean,
+        nav_links?: NavLink[]
+    },
+    content_entry: string,
     lang: string,
-    navLinks: NavLink[],
+    explorer: {
+        enable: boolean,
+        empty_dirs: boolean,
+        size: "default" | "minimal" | "compact",
+        pagination: boolean,
+        posts_per_page: number | "all"
+    },
+    posts_list: {
+        size: "default" | "minimal" | "compact",
+        pagination: boolean,
+        posts_per_page: number | "all",
+        path: string,
+        recursive: boolean
+    }
     metadata_base: string,
-    description: string,
-    theme: 'light' | 'dark' | 'auto'
 }
