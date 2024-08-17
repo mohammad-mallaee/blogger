@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import './utils/colors.css'
-import Header from './components/Header'
 import ThemeProvider from './components/ThemeProvider'
 import './utils/font'
 import config from '@/config.blog'
