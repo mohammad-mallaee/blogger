@@ -6,7 +6,7 @@ import config from "@/config.blog";
 
 export default function Header({ theme, setTheme }: { theme: string, setTheme: (theme: string) => void }) {
     const pathname = usePathname()
-    return <div className={`flex flex-col-reverse sm:flex-row w-full justify-between sm:items-center px-3 sm:px-0 py-6 max-w-[720px]`}
+    return <div className={`flex flex-col-reverse sm:flex-row w-full justify-between sm:items-center px-3 sm:px-0 pt-8 pb-6 max-w-[740px]`}
         style={{ direction: config.direction }}>
         <Link className={["text-3xl flex font-bold items-center gap-2", pathname === '/' ? "" : "text-[--on-background-variant]"].join(" ")}
             href={'/'}>
