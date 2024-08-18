@@ -1,7 +1,7 @@
 ---
 title: Welcome to blogger
 date: 2024-8-16
-posts_list: { path: "posts" }
+posts_list: { path: "posts", size: "compact" }
 ---
 
 This is your new home!

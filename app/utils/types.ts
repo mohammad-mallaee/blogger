@@ -1,3 +1,5 @@
+export type PostSize = "default" | "minimal" | "compact"
+
 export type PostData = {
     title: string,
     show_title?: boolean,
@@ -12,7 +14,7 @@ export type PostData = {
     keywords?: string,
     tags?: string
     posts_list: boolean | {
-        size?: "default" | "minimal" | "compact",
+        size?: PostSize,
         pagination?: boolean,
         posts_per_page?: number | "all",
         recursive?: boolean
@@ -55,7 +57,7 @@ export type Config = {
     content_entry: string,
     lang: string,
     posts_list: {
-        size: "default" | "minimal" | "compact",
+        size: PostSize,
         pagination: boolean,
         posts_per_page: number | "all",
         path: string,

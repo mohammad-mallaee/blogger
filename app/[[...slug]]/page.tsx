@@ -37,7 +37,7 @@ export default async function Page({ params }: { params: { slug: string | string
     const postsList = getMdPostsList(data)
     const posts = postsList ? await getLatestPosts({ recursive: postsList.recursive, path: postsList.path }) : []
 
-    return <main className="min-h-screen py-4 px-4 md:px-2 pt-2 pb-16 max-w-[720px] w-full" style={{ direction: getMdDirection(data) }}>
+    return <main className="min-h-screen py-4 px-4 md:px-1 pt-2 pb-16 max-w-[720px] w-full" style={{ direction: getMdDirection(data) }}>
         {data.image && <img src={data.image} alt={data.title} className="w-full mb-8 rounded-md aspect-[18/9.5]" />}
         {data.show_title !== false &&
             <>
@@ -49,6 +49,7 @@ export default async function Page({ params }: { params: { slug: string | string
                         year: "numeric",
                     })}
                 </h1>
+                <br />
             </>
         }
         <article className="markdown">
@@ -58,7 +59,7 @@ export default async function Page({ params }: { params: { slug: string | string
             postsList &&
             <div>
                 {posts.map((post) => {
-                    return <PostCard post={post} key={post.slug} />
+                    return <PostCard size={postsList.size} post={post} key={post.slug} />
                 })}
             </div>
         }

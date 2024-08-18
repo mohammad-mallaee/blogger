@@ -14,7 +14,7 @@ const config: Config = {
         ],
         blog_name: true,
         logo: false,
-        theme_toggle: false,
+        theme_toggle: true,
     },
     lang: 'en',
     direction: 'ltr',
