@@ -22,9 +22,15 @@ export default function Header({ theme, setTheme }: { theme: string, setTheme: (
                     href={link.href}>{link.name}
                 </Link>
             })}
-            <button className="text-sm border rounded px-3" onClick={() => {
-                setTheme(theme === 'dark' ? 'light' : 'dark')
-            }}>{theme}</button>
+            {
+                config.header.theme_toggle &&
+                <button className="text-sm border rounded px-3"
+                    onClick={() => {
+                        setTheme(theme === 'dark' ? 'light' : 'dark')
+                    }}>
+                    {theme}
+                </button>
+            }
         </div>
     </div>
 }

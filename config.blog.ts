@@ -13,8 +13,8 @@ const config: Config = {
             }
         ],
         blog_name: true,
-        logo: true,
-        theme_toggle: true,
+        logo: false,
+        theme_toggle: false,
     },
     lang: 'en',
     direction: 'ltr',

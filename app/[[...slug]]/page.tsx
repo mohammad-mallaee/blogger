@@ -1,10 +1,11 @@
-import { getLatestPosts, getPost } from "@/app/actions/posts"
+import { getAllPosts, getLatestPosts, getPost } from "@/app/actions/posts"
 import { notFound } from "next/navigation"
 import Markdown from "@/app/components/Markdown/Markdown"
 
 import { getMdAuthors, getMdDirection, getMdLanguage, getMdPostsList } from "@/app/actions/mdProperties";
 import config from "@/config.blog";
 import PostCard from "../components/PostCard";
+import { PostData } from "../utils/types";
 
 export async function generateMetadata({ params }: { params: { slug: string | string[] } }) {
     if (params.slug === undefined)
@@ -34,7 +35,7 @@ export default async function Page({ params }: { params: { slug: string | string
 
     const { data, content } = await getPost(params.slug || "").catch(() => { notFound() })
     const postsList = getMdPostsList(data)
-    const posts = postsList ? await getLatestPosts(postsList.path) : []
+    const posts = postsList ? await getLatestPosts({ recursive: postsList.recursive, path: postsList.path }) : []
 
     return <main className="min-h-screen py-4 px-4 md:px-2 pt-2 pb-16 max-w-[720px] w-full" style={{ direction: getMdDirection(data) }}>
         {data.image && <img src={data.image} alt={data.title} className="w-full mb-8 rounded-md aspect-[18/9.5]" />}
@@ -64,9 +65,9 @@ export default async function Page({ params }: { params: { slug: string | string
     </main >
 }
 
-// export async function generateStaticParams() {
-//     const posts = await getAllPosts()
-//     return posts.map((post) => ({
-//         slug: post.slug,
-//     }))
-// }
+export async function generateStaticParams() {
+    const posts = await getAllPosts({ recursive: true, self: true })
+    return posts.map((post: PostData) => ({
+        slug: post.slug.split("/").slice(1),
+    }))
+}

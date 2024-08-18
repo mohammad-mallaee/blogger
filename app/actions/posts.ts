@@ -4,6 +4,7 @@ import config from '../../config.blog'
 import { join, normalize } from "path"
 import { PostData } from "../utils/types"
 import fs from 'fs/promises'
+import { Dirent } from "fs";
 
 class Entry {
     path = ""
@@ -31,7 +32,15 @@ function readMarkdownFile(path: string, slug: string) {
     })
 }
 
-async function getEntries(recursive: boolean = false, path: string = "") {
+function filterEntry(e: Dirent, path: string, self: boolean) {
+    if (!e.name.endsWith(".md"))
+        return false
+    if (!self && e.name === "index.md" && e.path == path)
+        return false
+    return true
+}
+
+async function getEntries({ recursive = false, path = "", self = false }) {
     path = join(config.content_entry, path)
     if (!recursive) {
         const entries = await fs.readdir(path, { withFileTypes: true }).catch(e => [])
@@ -51,7 +60,7 @@ async function getEntries(recursive: boolean = false, path: string = "") {
     } else {
         const entries = await fs.readdir(path, { withFileTypes: true, recursive: true }).catch(e => [])
         return entries
-            .filter(entry => entry.name.endsWith(".md") && (entry.name === "index.md" ? entry.path !== path : true))
+            .filter(entry => filterEntry(entry, path, self))
             .map((entry) => {
                 let slug = entry.path.replace(normalize(config.content_entry), "")
                 if (entry.name !== "index.md")
@@ -61,8 +70,8 @@ async function getEntries(recursive: boolean = false, path: string = "") {
     }
 }
 
-export async function getAllPosts(path: string | undefined = undefined) {
-    const entries = await getEntries(true, path)
+export async function getAllPosts({ recursive = false, path = "", self = false }) {
+    const entries = await getEntries({ recursive, path, self })
     const fileContentsResult = await Promise.all(
         entries.map((entry) => {
             return readMarkdownFile(entry.path, entry.slug).catch(e => e)
@@ -71,8 +80,8 @@ export async function getAllPosts(path: string | undefined = undefined) {
     return fileContentsResult.filter(result => !(result instanceof Error))
 }
 
-export async function getLatestPosts(path: string | undefined = undefined) {
-    const posts: PostData[] = await getAllPosts(path)
+export async function getLatestPosts({ recursive = false, path = "", self = false }) {
+    const posts: PostData[] = await getAllPosts({ recursive, path, self })
     posts.sort((a: PostData, b: PostData) => {
         if (a.date && b.date)
             return Date.parse(a.date) < Date.parse(b.date) ? 1 : -1
