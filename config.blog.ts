@@ -24,7 +24,8 @@ const config: Config = {
         pagination: false,
         posts_per_page: "all",
         path: "",
-        recursive: true
+        recursive: true,
+        header: false
     },
     // These are default values for metadata base. If you have your domain,
     // you can either set it in environment variables or set it here.
