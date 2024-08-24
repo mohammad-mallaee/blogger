@@ -36,7 +36,7 @@ code[data-line-numbers-max-digits="3"]>[data-line]::before {
 }
 
 .markdown p {
-    @apply pb-6;
+    @apply py-2;
 }
 
 .markdown a {

@@ -25,3 +25,13 @@ export function getMdAuthors(data: PostData) {
         return config.authors
     else return ""
 }
+
+export function getMdPostsList(data: PostData) {
+    if (!data.posts_list) {
+        return false
+    }
+    if (data.posts_list === true) {
+        return config.posts_list
+    }
+    return { ...config.posts_list, ...data.posts_list }
+}
