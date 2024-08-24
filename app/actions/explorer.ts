@@ -1,4 +1,5 @@
 import config from "@/config.blog"
+import { Dirent } from "fs"
 import fs from "fs/promises"
 import { join, normalize } from "path"
 
@@ -11,7 +12,15 @@ class Entry {
     }
 }
 
-export async function getEntries(recursive: boolean = false, path: string = "") {
+function filterEntry(e: Dirent, path: string, self: boolean) {
+    if (!e.name.endsWith(".md"))
+        return false
+    if (!self && e.name === "index.md" && e.path == path)
+        return false
+    return true
+}
+
+export async function getEntries({ recursive = false, path = "", self = false }) {
     path = join(config.content_entry, path)
     if (!recursive) {
         const entries = await fs.readdir(path, { withFileTypes: true }).catch(e => [])
@@ -31,11 +40,11 @@ export async function getEntries(recursive: boolean = false, path: string = "") 
     } else {
         const entries = await fs.readdir(path, { withFileTypes: true, recursive: true }).catch(e => [])
         return entries
-            .filter(entry => entry.name.endsWith(".md") && (entry.name === "index.md" ? entry.path !== path : true))
+            .filter(entry => filterEntry(entry, path, self))
             .map((entry) => {
                 let slug = entry.path.replace(normalize(config.content_entry), "")
                 if (entry.name !== "index.md")
-                    slug = join(slug, entry.name.replace(".md", ""))
+                    slug = join("/", slug, entry.name.replace(".md", ""))
                 return new Entry(join(entry.path, entry.name), slug)
             })
     }
