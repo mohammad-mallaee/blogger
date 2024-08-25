@@ -1,7 +1,7 @@
 import config from "@/config.blog"
 import { Dirent } from "fs"
 import fs from "fs/promises"
-import { join, normalize } from "path"
+import { join, normalize, sep } from "path"
 
 class Entry {
     path = ""
@@ -44,7 +44,7 @@ export async function getEntries({ recursive = false, path = "", self = false })
             .map((entry) => {
                 let slug = entry.path.replace(normalize(config.content_entry), "")
                 if (entry.name !== "index.md")
-                    slug = join("/", slug, entry.name.replace(".md", ""))
+                    slug = join(sep, slug, entry.name.replace(".md", ""))
                 return new Entry(join(entry.path, entry.name), slug)
             })
     }

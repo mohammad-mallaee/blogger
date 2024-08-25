@@ -6,12 +6,13 @@ import { getMdAuthors, getMdDirection, getMdLanguage, getMdPostsList } from "@/a
 import config from "@/config.blog";
 import PostCard from "../components/PostCard";
 import { PostData } from "../utils/types";
+import path from "path";
 
 export async function generateMetadata({ params }: { params: { slug: string | string[] } }) {
     if (params.slug === undefined)
         params.slug = ""
     else if (Array.isArray(params.slug))
-        params.slug = params.slug.join("/")
+        params.slug = params.slug.join(path.sep)
 
     const { data } = await getPost(params.slug).catch(() => notFound())
 
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: { params: { slug: string | st
 
 export default async function Page({ params }: { params: { slug: string | string[] } }) {
     if (Array.isArray(params.slug))
-        params.slug = params.slug.join("/")
+        params.slug = params.slug.join(path.sep)
 
     const { data, content } = await getPost(params.slug || "").catch(() => { notFound() })
     const postsList = getMdPostsList(data)
@@ -69,6 +70,6 @@ export default async function Page({ params }: { params: { slug: string | string
 export async function generateStaticParams() {
     const posts = await getAllPosts({ recursive: true, self: true })
     return posts.map((post: PostData) => ({
-        slug: post.slug.split("/").slice(1),
+        slug: post.slug.split(path.sep).slice(1),
     }))
 }
