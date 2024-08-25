@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import './globals.css'
 import './utils/colors.css'
 import ThemeProvider from './components/ThemeProvider'
-import './utils/font'
 import config from '@/config.blog'
 
 export const metadata: Metadata = {
