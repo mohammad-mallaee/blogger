@@ -31,7 +31,7 @@ const DefaultCard = ({ post }: { post: PostData }) => {
         })}
       </div>
       {post.spoiler &&
-        <div className='text-[--on-surface-variant] text-[15px] sm:text-[16px] mt-1'>{post.spoiler}</div>
+        <div className='text-[--on-surface-variant] text-[15px] sm:text-[16px]'>{post.spoiler}</div>
       }
     </Link>
   )

@@ -22,10 +22,6 @@ body {
   @apply font-light;
 }
 
-h1 {
-  @apply font-light;
-}
-
 img {
   object-fit: cover;
 }

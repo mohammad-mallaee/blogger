@@ -26,7 +26,7 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <body id="theme-provider"
-      className='flex flex-col items-center gap-2 bg-[--background] text-[--on-background]'
+      className='flex flex-col items-center bg-[--background] text-[--on-background]'
       data-theme={theme}>
       <Header theme={theme} setTheme={setTheme}/>
       {children}
