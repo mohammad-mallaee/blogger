@@ -28,7 +28,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   --radius-bottom: 12px;
   --padding-top: 1rem;
   --padding-bottom: 1rem;
-  font-size: 18px;
+  @apply text-[17px] md:text-[18px]
 }
 
 .markdown * {
