@@ -52,15 +52,15 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 .markdown h1 {
-  @apply mt-4 text-4xl font-normal;
+  @apply mt-4 text-4xl font-medium;
 }
 
 .markdown h2 {
-  @apply mt-4 text-3xl font-normal;
+  @apply mt-4 text-3xl font-medium;
 }
 
 .markdown h3 {
-  @apply mt-4 text-2xl font-normal;
+  @apply mt-4 text-2xl font-medium;
 }
 
 .markdown h4 {

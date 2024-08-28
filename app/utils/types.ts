@@ -28,7 +28,7 @@ export type PostData = {
 export enum Theme {
     light = 'light',
     dark = 'dark',
-    auto = 'auto'
+    system = 'system'
 }
 
 export type Author = string | {
@@ -48,7 +48,7 @@ export type Config = {
     description: string,
     author?: string | Author,
     authors?: Author[],
-    theme: 'light' | 'dark' | 'auto',
+    theme: 'light' | 'dark' | 'system',
     direction: Direction,
     logo: string,
     header: {

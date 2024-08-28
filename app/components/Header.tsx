@@ -4,9 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import config from "@/config.blog";
 import ThemeIcon from "./ThemeIcon";
+import { useTheme } from "next-themes";
 
-export default function Header({ theme, setTheme }: { theme: string, setTheme: (theme: "dark" | "light" | "auto") => void }) {
+export default function Header() {
     const pathname = usePathname()
+    const { theme, setTheme } = useTheme()
     return <div className={`flex flex-col-reverse sm:flex-row w-full justify-between sm:items-center px-3 sm:px-0 pt-8 pb-6 max-w-[740px]`}
         style={{ direction: config.direction }}>
         <Link className={["text-3xl flex font-bold items-center gap-2", pathname === '/' ? "" : "text-[--on-background-variant]"].join(" ")}
@@ -26,7 +28,7 @@ export default function Header({ theme, setTheme }: { theme: string, setTheme: (
             {
                 config.header.theme_toggle &&
                 <button className="cursor-pointer outline-none" onClick={() => {
-                    setTheme(theme === "auto" ? "dark" : theme === "dark" ? "light" : "auto")
+                    setTheme(theme === "system" ? "dark" : theme === "dark" ? "light" : "system")
                 }}>
                     <ThemeIcon theme={theme} />
                 </button>

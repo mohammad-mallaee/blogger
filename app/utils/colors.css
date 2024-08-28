@@ -1,4 +1,4 @@
-#theme-provider[data-theme="light"] {
+html {
   --background: #fcfcfc;
   --on-background: #101010;
   --on-background-variant: #7a7a7a;
@@ -28,7 +28,7 @@
   --link: #0070e1;
 }
 
-#theme-provider[data-theme="dark"] {
+html.dark {
   --background: #0e1818;
   --on-background: #eaeaea;
   --on-background-variant: #BCBCBC;

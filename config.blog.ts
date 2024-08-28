@@ -3,7 +3,7 @@ const config: Config = {
     blog_name: 'Blogger',
     description: 'Your favorite blog template',
     author: { name: 'Mohammad Mallaee', url: 'https://github.com/mohammad-mallaee' },
-    theme: 'auto',
+    theme: 'system',
     logo: "/logo.png",
     header: {
         nav_links: [
