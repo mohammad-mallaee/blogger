@@ -1,19 +1,20 @@
 'use client'
-import { ReactNode, useEffect, useState } from 'react'
+import { ReactNode, useState } from 'react'
 import config from '@/config.blog'
 import Header from './Header'
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   const themeConfig = config.theme
-  const [theme, setTheme] = useState('dark')
-  useEffect(() => {
-    if (themeConfig === 'auto') {
-      setTheme(getOsTheme())
+  const [theme, setTheme] = useState(themeConfig)
+
+  const getTheme = (theme: string) => {
+    if (theme === 'auto') {
+      return getOsTheme()
     } else {
-      setTheme(themeConfig)
+      return theme
     }
-  }, [themeConfig])
+  }
 
   const getOsTheme = () => {
     const media = '(prefers-color-scheme: dark)'
@@ -27,8 +28,8 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
   return (
     <body id="theme-provider"
       className='flex flex-col items-center bg-[--background] text-[--on-background]'
-      data-theme={theme}>
-      <Header theme={theme} setTheme={setTheme}/>
+      data-theme={getTheme(theme)}>
+      <Header theme={theme} setTheme={setTheme} />
       {children}
     </body>
   )
