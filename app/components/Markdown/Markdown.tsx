@@ -17,6 +17,10 @@ export default function Markdown({ source }: { source: string, components?: any 
                     //@ts-ignore
                     [rehypePrettyCode, {
                         keepBackground: false,
+                        theme: {
+                            dark: "github-dark",
+                            light: "github-light",
+                        }
                     }]
                 ],
                 remarkPlugins: [

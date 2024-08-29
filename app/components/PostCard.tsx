@@ -22,7 +22,7 @@ const DefaultCard = ({ post }: { post: PostData }) => {
       {post.image &&
         <img src={post.image} alt={post.title} className='rounded-sm w-full mb-3 aspect-[18/9.5]' />
       }
-      <div className={'text-[20px] sm:text-[24px] font-normal group-hover:text-primar'}>{post.title}</div>
+      <div className={'text-[20px] sm:text-[24px] font-normal group-hover:text-primary'}>{post.title}</div>
       <div className='text-on-surface-variant text-[13px] sm:text-sm font-normal'>
         {new Date(post.date || "").toLocaleDateString(getMdLanguage(post), {
           day: "numeric",
