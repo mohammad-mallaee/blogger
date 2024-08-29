@@ -26,6 +26,6 @@ export default function Markdown({ source }: { source: string, components?: any 
                 remarkPlugins: [
                     remarkMath,
                 ]
-            },
+            }
         }} />
 }
