@@ -9,12 +9,7 @@
 body {
   width: 100%;
   height: 100%;
-  font-family: 'Lexend Variable';
-  @apply font-lighter
-}
-
-h1 {
-  @apply font-light
+  @apply font-light;
 }
 
 img {
