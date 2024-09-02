@@ -14,14 +14,13 @@ const github =
             clientSecret: process.env.GITHUB_CLIENT_SECRET as string
         })`
 
-const route = (github = "", google = "") =>
+const route = (github = "") =>
     `import NextAuth from "next-auth/next"
 import Github from "next-auth/providers/github"
 
 const handler = NextAuth({
     providers: [
-        ${github},
-        ${google}
+        ${github}
     ]
 })
 
