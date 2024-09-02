@@ -35,3 +35,10 @@ export function getMdPostsList(data: PostData) {
     }
     return { ...config.posts_list, ...data.posts_list }
 }
+
+export function getMdPostState(data: PostData) {
+    if (data.state) {
+        return data.state
+    }
+    return "public"
+}

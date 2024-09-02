@@ -4,7 +4,7 @@ import config from '../../config.blog'
 import { join } from "path"
 import { PostData } from "../utils/types"
 import { getEntries } from "./explorer";
-
+import { getMdPostState } from "./mdProperties";
 
 function readMarkdownFile(path: string, slug: string) {
     return new Promise<PostData>((resolve, reject) => {
@@ -29,7 +29,7 @@ export async function getAllPosts({ recursive = false, path = "", self = false }
             return readMarkdownFile(entry.path, entry.slug).catch(e => e)
         })
     )
-    return fileContentsResult.filter(result => !(result instanceof Error))
+    return fileContentsResult.filter(result => !(result instanceof Error) && getMdPostState(result) !== 'draft')
 }
 
 export async function getLatestPosts({ recursive = false, path = "", self = false }) {

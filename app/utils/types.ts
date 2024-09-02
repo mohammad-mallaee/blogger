@@ -1,4 +1,5 @@
 export type PostSize = "default" | "minimal" | "compact"
+export type PostState = "draft" | "public" | "private"
 
 export type PostList = {
     size?: PostSize,
@@ -22,7 +23,8 @@ export type PostData = {
     spoiler?: string,
     keywords?: string,
     tags?: string
-    posts_list: boolean | PostList
+    posts_list?: boolean | PostList
+    state?: PostState,
 }
 
 export enum Theme {
