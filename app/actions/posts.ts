@@ -1,6 +1,6 @@
 import { readFile } from "fs/promises";
 import matter from "gray-matter";
-import config from '../../config.blog'
+import config from '../../config'
 import { join } from "path"
 import { PostData } from "../utils/types"
 import { getEntries } from "./explorer";

@@ -63,4 +63,10 @@ export type Config = {
     lang: string,
     posts_list: PostList
     metadata_base: string,
+    auth: {
+        enable: boolean,
+        provideres: {
+            github: boolean,
+        }
+    }
 }

@@ -1,4 +1,4 @@
-import config from "@/config.blog"
+import config from "@/config"
 import { useState, useEffect } from "react"
 
 export default function ThemeIcon({ theme = config.theme }: { theme?: string }) {

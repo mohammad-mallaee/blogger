@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import './utils/colors.css'
-import config from '@/config.blog'
+import config from '@/config'
 import Providers from './components/Providers'
 
 import { Nunito } from "next/font/google"

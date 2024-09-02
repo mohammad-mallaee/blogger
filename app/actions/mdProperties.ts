@@ -1,5 +1,5 @@
 import { Direction, PostData } from "../utils/types"
-import config from "../../config.blog"
+import config from "../../config"
 
 export function getMdDirection(data: PostData) {
     let dir: Direction = 'ltr'
