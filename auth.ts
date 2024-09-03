@@ -21,7 +21,19 @@ import Github from "next-auth/providers/github"
 const handler = NextAuth({
     providers: [
         ${github}
-    ]
+    ],
+    callbacks: {
+        async signIn({ user }) {
+            const email = user.email || ""
+            const whitelist = JSON.parse(process.env.WHITELIST as string) as string[] || []
+            return whitelist.includes(email)
+        }
+    },
+    pages: {
+        signIn: '/signin',
+        signOut: '/signout',
+        error: '/auth-error'
+    },
 })
 
 export { handler as GET, handler as POST }`
