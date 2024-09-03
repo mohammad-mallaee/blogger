@@ -27,7 +27,7 @@ const config = {
         header: false
     },
     auth: {
-        enable: true,
+        enable: false,
         provideres: {
             github: true
         }
