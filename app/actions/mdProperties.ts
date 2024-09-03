@@ -1,5 +1,5 @@
 import { Direction, PostData } from "../utils/types"
-import config from "../../config.blog"
+import config from "../../config"
 
 export function getMdDirection(data: PostData) {
     let dir: Direction = 'ltr'
@@ -34,4 +34,11 @@ export function getMdPostsList(data: PostData) {
         return config.posts_list
     }
     return { ...config.posts_list, ...data.posts_list }
+}
+
+export function getMdPostState(data: PostData) {
+    if (data.state) {
+        return data.state
+    }
+    return "public"
 }

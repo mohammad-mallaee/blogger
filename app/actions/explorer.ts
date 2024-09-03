@@ -1,4 +1,4 @@
-import config from "@/config.blog"
+import config from "@/config"
 import { Dirent } from "fs"
 import fs from "fs/promises"
 import { join, normalize, sep } from "path"

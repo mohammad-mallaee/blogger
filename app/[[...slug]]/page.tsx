@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import Markdown from "@/app/components/Markdown/Markdown"
 
 import { getMdAuthors, getMdDirection, getMdLanguage, getMdPostsList } from "@/app/actions/mdProperties";
-import config from "@/config.blog";
+import config from "@/config";
 import PostCard from "../components/PostCard";
 import { PostData } from "../utils/types";
 import path from "path";

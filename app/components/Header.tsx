@@ -2,7 +2,7 @@
 import path from "path";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import config from "@/config.blog";
+import config from "@/config";
 import ThemeIcon from "./ThemeIcon";
 import { useTheme } from "next-themes";
 
