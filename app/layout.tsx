@@ -3,9 +3,7 @@ import './globals.css'
 import './utils/colors.css'
 import config from '@/config'
 import Providers from './components/Providers'
-
-import { Nunito } from "next/font/google"
-const font = Nunito({ subsets: ['latin'], weight: ['200', '300', '400', '500', '600', '700', '800', '900'] })
+import font from './utils/font'
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.metadata_base),

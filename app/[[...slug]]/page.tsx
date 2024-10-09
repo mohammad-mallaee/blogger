@@ -42,7 +42,7 @@ export default async function Page({ params }: { params: { slug: string | string
         {data.image && <img src={data.image} alt={data.title} className="w-full mb-6 rounded-md aspect-[18/9.5]" />}
         {data.show_title !== false &&
             <div className={(data.image ? "mb-6" : "my-6")}>
-                <h1 className="text-4xl mb-1 block font-medium">{data.title}</h1>
+                <h1 className="text-4xl mb-1 block font-medium text-on-background-stronger">{data.title}</h1>
                 <h1 className="text-sm sm:text-base">
                     {new Date(data.date || "").toLocaleDateString(getMdLanguage(data), {
                         day: "numeric",

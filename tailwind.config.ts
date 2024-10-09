@@ -17,17 +17,10 @@ const config: Config = {
       colors: {
         'background': 'var(--background)',
         'on-background': 'var(--on-background)',
-        'on-background-variant': 'var(--on-background-variant)',
-        'background-hover': 'var(--background-hover)',
+        'on-background-stronger': 'var(--on-background-stronger)',
+        'on-background-muted': 'var(--on-background-muted)',
         'primary': 'var(--primary)',
-        'on-primary': 'var(--on-primary)',
-        'surface': 'var(--surface)',
-        'on-surface': 'var(--on-surface)',
-        'on-surface-variant': 'var(--on-surface-variant)',
-        'on-surface-variant2': 'var(--on-surface-variant2)',
-        'surface-hover': 'var(--surface-hover)',
         'outline': 'var(--outline)',
-        'icon-button': 'var(--icon-button)',
         'code-bg': 'var(--code-bg)',
         'on-code': 'var(--on-code)',
         'code-bg-highlight': 'var(--code-bg-highlight)',
@@ -35,6 +28,7 @@ const config: Config = {
         'inlineCode-bg': 'var(--inlineCode-bg)',
         'inlineCode-text': 'var(--inlineCode-text)',
         'link': 'var(--link)',
+        'link-hover': 'var(--link-hover)',
       }
     }
   },
