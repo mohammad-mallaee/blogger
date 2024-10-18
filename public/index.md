@@ -1,12 +1,8 @@
 ---
-title: Blogger
-show_title: false
-posts_list: { path: "posts" }
+title: Welcome to your new home
+image: /pink-sky.webp
 ---
-## Welcome to your new home
-Imagine having a space where your thoughts, stories, and ideas flow effortlessly into the world
-and you can share what matters to you.
-with math writing, html and rtl support you dont need to worry about the limitations,
-just write the Markdown and blogger will do the rest for you.
+Imagine having a space where your thoughts, stories, and ideas flow effortlessly into the world where you can share what matters to you. With many features that blogger provides, you just write the Markdown and blogger will do the rest for you.
 
-Folow along these guides to have your own blog:
+As you read this post and think to yourself, "Oh, I'm going to write some cool articles and show them to the world," many things are happening in the world of which you are a part.
+Some of them change your life a bit, and some of them turn your whole story in another direction. And here you are, on your way to creating a new blog, who knows what it will turn into?

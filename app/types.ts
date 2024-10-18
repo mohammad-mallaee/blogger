@@ -1,18 +1,7 @@
-export type PostSize = "default" | "minimal" | "compact"
-export type PostState = "draft" | "public" | "private"
-
-export type PostList = {
-    size?: PostSize,
-    pagination?: boolean,
-    posts_per_page?: number | "all",
-    recursive?: boolean
-    path?: string,
-    header?: boolean
-}
+export type Direction = 'ltr' | 'rtl'
 
 export type PostData = {
     title: string,
-    show_title?: boolean,
     slug: string,
     date?: string,
     dir?: Direction,
@@ -22,9 +11,6 @@ export type PostData = {
     image?: string,
     spoiler?: string,
     keywords?: string,
-    tags?: string
-    posts_list?: boolean | PostList
-    state?: PostState,
 }
 
 export enum Theme {
@@ -37,8 +23,6 @@ export type Author = string | {
     name: string,
     url?: string
 }
-
-export type Direction = 'ltr' | 'rtl'
 
 export type NavLink = {
     name: string,
@@ -61,12 +45,5 @@ export type Config = {
     },
     content_entry: string,
     lang: string,
-    posts_list: PostList
     metadata_base: string,
-    auth: {
-        enable: boolean,
-        provideres: {
-            github: boolean,
-        }
-    }
 }

@@ -1,4 +1,4 @@
-import { Direction, PostData } from "../utils/types"
+import { Direction, PostData } from "../types"
 import config from "../../config"
 
 export function getMdDirection(data: PostData) {
@@ -24,21 +24,4 @@ export function getMdAuthors(data: PostData) {
     else if (config.authors)
         return config.authors
     else return ""
-}
-
-export function getMdPostsList(data: PostData) {
-    if (!data.posts_list) {
-        return false
-    }
-    if (data.posts_list === true) {
-        return config.posts_list
-    }
-    return { ...config.posts_list, ...data.posts_list }
-}
-
-export function getMdPostState(data: PostData) {
-    if (data.state) {
-        return data.state
-    }
-    return "public"
 }
