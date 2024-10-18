@@ -38,11 +38,11 @@ export default async function Page({ params }: { params: { slug: string | string
     const postsList = getMdPostsList(data)
     const posts = postsList ? await getLatestPosts({ recursive: postsList.recursive, path: postsList.path }) : []
 
-    return <main className="min-h-screen py-4 px-6 md:px-1 pt-2 pb-16 max-w-[740px] w-full" style={{ direction: getMdDirection(data) }}>
+    return <main className="min-h-screen py-4 px-6 md:px-1 pt-2 pb-16 max-w-post w-full" style={{ direction: getMdDirection(data) }}>
         {data.image && <img src={data.image} alt={data.title} className="w-full mb-6 rounded-md aspect-[18/9.5]" />}
         {data.show_title !== false &&
             <div className={(data.image ? "mb-6" : "my-6")}>
-                <h1 className="text-4xl mb-1 block font-medium">{data.title}</h1>
+                <h1 className="text-4xl mb-1 block font-medium text-on-background-stronger">{data.title}</h1>
                 <h1 className="text-sm sm:text-base">
                     {new Date(data.date || "").toLocaleDateString(getMdLanguage(data), {
                         day: "numeric",

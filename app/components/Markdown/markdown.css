@@ -22,13 +22,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 .markdown {
-  line-height: 26px;
-  --path: none;
-  --radius-top: 8px;
-  --radius-bottom: 8px;
-  --padding-top: 1rem;
-  --padding-bottom: 1rem;
-  @apply text-[17px] md:text-[18px];
+  @apply text-body-sm md:text-body leading-[1.625rem];
 }
 
 .markdown * {
@@ -40,7 +34,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 .markdown a {
-  @apply text-[--link] font-medium;
+  @apply text-link font-medium hover:text-link-hover hover:underline transition-colors;
 }
 
 .markdown hr {
@@ -52,45 +46,27 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 .markdown h1 {
-  @apply mt-4 text-4xl font-medium;
+  @apply mt-4 text-h1 font-medium text-on-background-stronger;
 }
 
 .markdown h2 {
-  @apply mt-4 text-3xl font-medium;
+  @apply mt-4 text-h2 font-medium text-on-background-stronger;
 }
 
 .markdown h3 {
-  @apply mt-4 text-2xl font-medium;
+  @apply mt-4 text-h3 font-medium text-on-background-stronger;
 }
 
 .markdown h4 {
-  @apply mt-4 text-xl font-normal;
-}
-
-.markdown :not(pre) > code {
-  @apply text-[15px];
-  border-radius: 6px;
-  background-color: var(--inlineCode-bg);
-  color: var(--inlineCode-text);
-  padding: 0.15em 0.4em 0.1em;
-  white-space: normal;
+  @apply mt-4 text-h4 font-normal;
 }
 
 .markdown pre {
-  @apply my-2 overflow-y-auto !py-3 pl-4 text-sm border border-outline leading-6;
-  clip-path: var(--path);
-  border-top-right-radius: var(--radius-top);
-  border-top-left-radius: var(--radius-top);
-  border-bottom-right-radius: var(--radius-bottom);
-  border-bottom-left-radius: var(--radius-bottom);
-  padding-top: var(--padding-top);
-  padding-bottom: var(--padding-bottom);
-  background-color: var(--code-bg);
+  @apply my-2 overflow-y-auto pl-4 text-sm border border-outline leading-6 rounded-md py-3 bg-code-bg;
 }
 
 .markdown pre code {
-  width: auto;
-  color: var(--on-code);
+  @apply text-on-code
 }
 
 .markdown pre code span {
@@ -101,26 +77,12 @@ html.dark .markdown pre code span {
   color: var(--shiki-dark);
 }
 
-.markdown pre [data-highlighted-line] {
-  margin-left: -16px;
-  padding-left: 12px;
-  border-left: 4px solid var(--code-border-highlight);
-  background-color: var(--code-bg-highlight);
-  display: block;
-  padding-right: 1em;
-}
-
 .markdown blockquote {
-  @apply relative -left-2 -ml-4 mb-8 pl-4;
-  font-style: italic;
-  border-left: 3px solid hsla(0, 0%, 0%, 0.9);
-  border-left-color: inherit;
-  opacity: 0.8;
+  @apply relative my-2 pl-3 opacity-80 border-l-white border-l-2 italic;
 }
 
 .markdown blockquote p {
-  margin: 0;
-  padding: 0;
+  @apply p-0 m-0;
 }
 
 .markdown p img {
@@ -129,18 +91,7 @@ html.dark .markdown pre code span {
 
 .markdown ul,
 ol {
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1rem;
-  margin-top: 0.5rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  list-style-position: outside;
-  list-style-image: none;
-  list-style: disc;
+  @apply mx-4 my-2 list-disc;
 }
 
 .markdown li {
@@ -148,6 +99,5 @@ ol {
 }
 
 .markdown img {
-  margin-bottom: 2rem;
-  max-width: 100%;
+  @apply max-w-full mb-2;
 }

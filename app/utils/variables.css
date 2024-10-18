@@ -1,0 +1,16 @@
+html {
+    --max-post-width: 740px;
+    --logo-size: 2.75rem;
+    --logo-small-size: 2rem;
+
+    --font-body-small: 1.0625rem;
+    --font-body: 1.125rem;
+    --font-label: 1rem;
+    --font-label-small: 0.875rem;
+    --font-h1: 2.25rem;
+    --font-h2: 1.875rem;
+    --font-h3: 1.5rem;
+    --font-h4: 1.25rem;
+    --font-name: 1.875rem;
+    --font-name-small: 1.5rem;
+}
