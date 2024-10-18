@@ -9,11 +9,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
       colors: {
         'background': 'var(--background)',
         'on-background': 'var(--on-background)',
@@ -29,6 +24,29 @@ const config: Config = {
         'inlineCode-text': 'var(--inlineCode-text)',
         'link': 'var(--link)',
         'link-hover': 'var(--link-hover)',
+      },
+      maxWidth: {
+        "post": 'var(--max-post-width)',
+      },
+      width: {
+        "logo": "var(--logo-size)",
+        "logo-sm": "var(--logo-size-sm)",
+      },
+      height: {
+        "logo": "var(--logo-size)",
+        "logo-sm": "var(--logo-size-sm)",
+      },
+      fontSize: {
+        "body": "var(--font-body)",
+        "body-sm": "var(--font-body-small)",
+        "label": "var(--font-label)",
+        "label-sm": "var(--font-label-small)",
+        "h1": "var(--font-h1)",
+        "h2": "var(--font-h2)",
+        "h3": "var(--font-h3)",
+        "h4": "var(--font-h4)",
+        "name": "var(--font-name)",
+        "name-sm": "var(--font-name-small)",
       }
     }
   },

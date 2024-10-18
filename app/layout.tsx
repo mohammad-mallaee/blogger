@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import './utils/colors.css'
+import './utils/variables.css'
+import './utils/extra.css'
 import config from '@/config'
 import Providers from './components/Providers'
 import font from './utils/font'

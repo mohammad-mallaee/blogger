@@ -22,7 +22,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 .markdown {
-  @apply text-[17px] md:text-[18px] leading-[26px];
+  @apply text-body-sm md:text-body leading-[1.625rem];
 }
 
 .markdown * {
@@ -46,19 +46,19 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 .markdown h1 {
-  @apply mt-4 text-4xl font-medium text-on-background-stronger;
+  @apply mt-4 text-h1 font-medium text-on-background-stronger;
 }
 
 .markdown h2 {
-  @apply mt-4 text-3xl font-medium text-on-background-stronger;
+  @apply mt-4 text-h2 font-medium text-on-background-stronger;
 }
 
 .markdown h3 {
-  @apply mt-4 text-2xl font-medium text-on-background-stronger;
+  @apply mt-4 text-h3 font-medium text-on-background-stronger;
 }
 
 .markdown h4 {
-  @apply mt-4 text-xl font-normal;
+  @apply mt-4 text-h4 font-normal;
 }
 
 .markdown pre {

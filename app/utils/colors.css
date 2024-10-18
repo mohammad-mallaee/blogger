@@ -20,7 +20,7 @@ html {
 html.dark {
   --background: #141612;
   --on-background-stronger: #f8f8f8;
-  --on-background: #e6e6e6;
+  --on-background: #dedede;
   --on-background-muted: #a5a0a8;
   --primary: #d157e9;
   --outline: #303532;
