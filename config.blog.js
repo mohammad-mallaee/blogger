@@ -1,7 +1,6 @@
 const config = {
     blog_name: 'Blogger',
     description: 'Your favorite blog template',
-    author: { name: 'Mohammad Mallaee', url: 'https://github.com/mohammad-mallaee' },
     theme: 'system',
     logo: "/logo.png",
     header: {
@@ -13,20 +12,6 @@ const config = {
     lang: 'en',
     direction: 'ltr',
     content_entry: "./public",
-    posts_list: {
-        size: "default",
-        pagination: false,
-        posts_per_page: "all",
-        path: "",
-        recursive: true,
-        header: false
-    },
-    auth: {
-        enable: false,
-        provideres: {
-            github: true
-        }
-    },
     // These are default values for metadata base. If you have your domain,
     // you can either set it in environment variables or set it here.
     // These will be used for open graph images (sharing preview).

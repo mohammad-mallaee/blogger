@@ -21,6 +21,20 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 2rem;
 }
 
+.markdown pre [data-highlighted-line] {
+  margin-left: -16px;
+  padding-left: 12px;
+  border-left: 4px solid var(--code-border-highlight);
+  background-color: var(--code-bg-highlight);
+  display: block;
+  padding-right: 1em;
+}
+
+.markdown :not(pre) > code {
+  padding: 0.15em 0.4em 0.1em;
+  @apply text-[0.9375rem] bg-inlineCode-bg text-inlineCode-text mx-[2px] whitespace-normal rounded;
+}
+
 .markdown {
   @apply text-body-sm md:text-body leading-[1.625rem];
 }

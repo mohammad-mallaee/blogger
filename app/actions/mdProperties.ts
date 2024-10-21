@@ -19,9 +19,5 @@ export function getMdAuthors(data: PostData) {
         return [data.author]
     else if (data.authors)
         return data.authors
-    else if (config.author)
-        return [config.author]
-    else if (config.authors)
-        return config.authors
-    else return ""
+    else return [""]
 }
