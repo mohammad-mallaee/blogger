@@ -27,7 +27,7 @@ here begins the hourney or so-called `hello world`.
 
 Congratulation! You created your first post. Now it's time to configure your blog.
 
-Create a `config.blog.js` in your main directory and fill it with your information:
+Create a `config.blog.js` in your `settings` directory and fill it with your information:
 ```js {2,3}
 const config = {
     blog_name: 'Blogger',
@@ -52,6 +52,15 @@ const config = {
 module.exports =  config;
 ```
 For now, change the highlighted properties only. Leave the others as they are.
+
+You will have something like this:
+```
+-- myblog
+	-- content
+		-- index.md
+    -- settings
+        -- config.blog.json
+```
 
 ### Deployment
 You can deploy your blog wherever you choose, but make sure these settings are configured correctly:
