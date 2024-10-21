@@ -38,7 +38,6 @@ const config: Config = {
       },
       fontSize: {
         "body": "var(--font-body)",
-        "body-sm": "var(--font-body-small)",
         "label": "var(--font-label)",
         "label-sm": "var(--font-label-small)",
         "h1": "var(--font-h1)",
