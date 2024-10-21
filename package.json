@@ -4,9 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "predev": "tsx auth.ts",
     "build": "next build",
-    "prebuild": "tsx auth.ts",
     "start": "next start",
     "lint": "next lint"
   },

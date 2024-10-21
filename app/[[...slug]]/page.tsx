@@ -2,10 +2,9 @@ import { getAllPosts, getLatestPosts, getPost } from "@/app/actions/posts"
 import { notFound } from "next/navigation"
 import Markdown from "@/app/components/Markdown/Markdown"
 
-import { getMdAuthors, getMdDirection, getMdLanguage, getMdPostsList } from "@/app/actions/mdProperties";
+import { getMdAuthors, getMdDirection, getMdLanguage } from "@/app/actions/mdProperties";
 import config from "@/config";
-import PostCard from "../components/PostCard";
-import { PostData } from "../utils/types";
+import { PostData } from "../types";
 import path from "path";
 
 export async function generateMetadata({ params }: { params: { slug: string | string[] } }) {
@@ -35,34 +34,26 @@ export default async function Page({ params }: { params: { slug: string | string
         params.slug = params.slug.join(path.sep)
 
     const { data, content } = await getPost(params.slug || "").catch(() => { notFound() })
-    const postsList = getMdPostsList(data)
-    const posts = postsList ? await getLatestPosts({ recursive: postsList.recursive, path: postsList.path }) : []
 
-    return <main className="min-h-screen py-4 px-6 md:px-1 pt-2 pb-16 max-w-post w-full" style={{ direction: getMdDirection(data) }}>
-        {data.image && <img src={data.image} alt={data.title} className="w-full mb-6 rounded-md aspect-[18/9.5]" />}
-        {data.show_title !== false &&
-            <div className={(data.image ? "mb-6" : "my-6")}>
-                <h1 className="text-4xl mb-1 block font-medium text-on-background-stronger">{data.title}</h1>
-                <h1 className="text-sm sm:text-base">
-                    {new Date(data.date || "").toLocaleDateString(getMdLanguage(data), {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                    })}
-                </h1>
+    return <main className="min-h-screen py-4 px-4 md:px-1 pt-2 pb-8 max-w-post w-full" style={{ direction: getMdDirection(data) }}>
+        {data.image && <img src={data.image} alt={data.title} className="w-full mb-4 rounded-md" />}
+        {(data.title || data.date) &&
+            <div className={(data.image ? "mb-2" : "my-6")}>
+                {data.title && <h1 className="text-h2 sm:text-h1 leading-9 mb-1 block font-medium text-on-background-stronger">{data.title}</h1>}
+                {data.date &&
+                    <h2 className="text-sm sm:text-base">
+                        {new Date(data.date || "").toLocaleDateString(getMdLanguage(data), {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric",
+                        })}
+                    </h2>
+                }
             </div>
         }
         <article className="markdown">
             <Markdown source={content} />
         </article>
-        {
-            postsList &&
-            <div>
-                {posts.map((post) => {
-                    return <PostCard size={postsList.size} post={post} key={post.slug} />
-                })}
-            </div>
-        }
     </main >
 }
 

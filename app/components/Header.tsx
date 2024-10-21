@@ -9,7 +9,7 @@ import { useTheme } from "next-themes";
 export default function Header() {
     const pathname = usePathname()
     const { theme, setTheme } = useTheme()
-    return <div className={`flex flex-wrap gap-4 sm:flex-row w-full justify-between sm:items-center px-4 md:px-0 pt-5 md:pt-8 pb-6 max-w-post`}
+    return <div className={`flex flex-wrap gap-4 sm:flex-row w-full justify-between sm:items-center px-4 md:px-0 pt-3 md:pt-5 pb-2 max-w-post`}
         style={{ direction: config.direction }}>
         <Link className={["text-name-sm sm:text-name flex font-bold items-center gap-2 md:gap-3", pathname === '/' ? "" : "text-on-background-muted"].join(" ")}
             href={'/'}>
