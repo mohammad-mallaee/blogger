@@ -22,7 +22,7 @@ For now, here's a basic directory structure (with "index.md" as your first blog 
 Open "index.md" and start writing! Here's an example:
 ```
 # Hello World
-here begins the hourney or so-called `hello world`.
+here begins the journey or so-called `hello world`.
 ```
 
 Congratulation! You created your first post. Now it's time to configure your blog.
