@@ -1,7 +1,7 @@
 import { readFile } from "fs/promises";
 import matter from "gray-matter";
 import config from '../../config'
-import { join } from "path"
+import { join, dirname } from "path"
 import { PostData } from "../types"
 import { getEntries } from "./explorer";
 
@@ -39,13 +39,26 @@ export async function getLatestPosts({ recursive = false, path = "", self = fals
     return posts
 }
 
-export async function getPost(slug: string): Promise<{ content: string, data: PostData }> {
+export async function getPost(slug: string): Promise<{ content: string, data: PostData, components: any }> {
     const markdown_index_path = join(config.content_entry, slug, 'index.md')
     const markdown_file_path = join(config.content_entry, slug + '.md')
+    let isIndex = true
     const fileData = await readFile(markdown_index_path)
-        .catch(async (e) => await readFile(markdown_file_path))
+        .catch(async (e) => {
+            isIndex = false
+            return await readFile(markdown_file_path)
+        })
     const { content, data }: { content: string, data: any } = matter(fileData)
+    const componentsPath = isIndex ? join(slug, "components") : join(dirname(slug), "components")
+    let components = {}
+    try {
+        components = await import(`../../public/${componentsPath}.js`)
+    } catch (e: any) {
+        if (!e || e.code !== "MODULE_NOT_FOUND") {
+            throw e
+        }
+    }
     if (!data)
         throw Error("The file is empty")
-    return { content, data }
+    return { content, data, components }
 }
