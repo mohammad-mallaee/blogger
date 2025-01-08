@@ -30,10 +30,12 @@ export async function generateMetadata({ params }: { params: { slug: string | st
 }
 
 export default async function Page({ params }: { params: { slug: string | string[] } }) {
+    if (params.slug === undefined)
+        params.slug = ""
     if (Array.isArray(params.slug))
         params.slug = params.slug.join(path.sep)
 
-    const { data, content } = await getPost(params.slug || "").catch(() => { notFound() })
+    const { data, content, components } = await getPost(params.slug).catch(() => { notFound() })
 
     return <main className="min-h-screen py-4 px-4 md:px-1 pt-2 pb-8 max-w-post w-full" style={{ direction: getMdDirection(data) }}>
         {data.image && <img src={data.image} alt={data.title} className="w-full mb-4 rounded-md" />}
@@ -52,7 +54,7 @@ export default async function Page({ params }: { params: { slug: string | string
             </div>
         }
         <article className="markdown">
-            <Markdown source={content} />
+            <Markdown source={content} components={components} />
         </article>
     </main >
 }

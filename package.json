@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "acorn-jsx": "^5.3.2",
     "gray-matter": "^4.0.3",
     "next": "14.0.4",
     "next-auth": "^4.24.7",
