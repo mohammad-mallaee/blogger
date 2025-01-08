@@ -15,7 +15,7 @@ class Entry {
 function filterEntry(e: Dirent, path: string, self: boolean) {
     if (!e.name.endsWith(".md"))
         return false
-    if (!self && e.name === "index.md" && e.path == path)
+    if (!self && e.name === "index.md" && e.parentPath == path)
         return false
     return true
 }
@@ -42,10 +42,10 @@ export async function getEntries({ recursive = false, path = "", self = false })
         return entries
             .filter(entry => filterEntry(entry, path, self))
             .map((entry) => {
-                let slug = entry.path.replace(normalize(config.content_entry), "")
+                let slug = entry.parentPath.replace(normalize(config.content_entry), "")
                 if (entry.name !== "index.md")
                     slug = join(sep, slug, entry.name.replace(".md", ""))
-                return new Entry(join(entry.path, entry.name), slug)
+                return new Entry(join(entry.parentPath, entry.name), slug)
             })
     }
 }
