@@ -5,12 +5,21 @@ import { usePathname } from "next/navigation";
 import config from "@/config";
 import ThemeIcon from "./ThemeIcon";
 import { useTheme } from "next-themes";
+import { Menu } from "lucide-react";
+import { useContext } from "react";
+import SidebarContext from "./providers/sidebar";
 
-export default function Header() {
+export default function Header({ sidebar }: { sidebar: boolean }) {
     const pathname = usePathname()
     const { theme, setTheme } = useTheme()
+    const context = useContext(SidebarContext)
     return <div className={`flex flex-wrap gap-4 sm:flex-row w-full justify-between sm:items-center px-4 md:px-0 pt-3 md:pt-5 pb-2 max-w-post`}
         style={{ direction: config.direction }}>
+        {sidebar &&
+            <button onClick={context.toggle} className="xl:hidden">
+                <Menu />
+            </button>
+        }
         <Link className={["text-name-sm sm:text-name flex font-bold items-center gap-2 md:gap-3", pathname === '/' ? "" : "text-on-background-muted"].join(" ")}
             href={'/'}>
             {config.header.logo && <img className="w-logo h-logo sm:w-logo sm:h-logo" src={config.logo} alt="logo" />}

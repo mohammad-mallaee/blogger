@@ -18,6 +18,7 @@ const config: Config = {
         'outline': 'var(--outline)',
         'code-bg': 'var(--code-bg)',
         'on-code': 'var(--on-code)',
+        'surface': 'var(--surface)',
         'code-bg-highlight': 'var(--code-bg-highlight)',
         'code-border-highlight': 'var(--code-border-highlight)',
         'inlineCode-bg': 'var(--inlineCode-bg)',

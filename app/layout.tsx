@@ -4,8 +4,9 @@ import './utils/colors.css'
 import './utils/variables.css'
 import './utils/extra.css'
 import config from '@/config'
-import Providers from './components/Providers'
+import Providers from './components/providers'
 import font from './utils/font'
+import clsx from 'clsx'
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.metadata_base),
@@ -26,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={'flex flex-col items-center bg-background text-on-background ' + font.className}>
+      <body className={clsx('flex bg-background text-on-background justify-center gap-8', font.className)}>
         <Providers>
           {children}
         </Providers>
