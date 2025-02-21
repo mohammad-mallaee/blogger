@@ -4,12 +4,7 @@ const config = {
     theme: 'system',
     logo: "/logo.png",
     header: {
-        nav_links: [
-            {
-                name: "Docs",
-                href: "/docs/getting-started"
-            }
-        ],
+        nav_links: [],
         blog_name: true,
         logo: false,
         theme_toggle: true,

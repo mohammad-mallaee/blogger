@@ -52,7 +52,5 @@ export type Config = {
 export type SidebarData = {
     name: string,
     url: string,
-    children?: SidebarData
-}[]
-
-export type UnpackArrayType<T> = T extends (infer R)[] ? R : T;
+    children?: SidebarData[]
+}
