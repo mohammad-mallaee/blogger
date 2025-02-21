@@ -48,7 +48,7 @@ export default async function Page({ params }: { params: { slug: string | string
         {showSidebar &&
             <Sidebar data={sidebarData} />
         }
-        <div className='flex flex-col items-center grow max-w-post'>
+        <div className='flex flex-col items-center grow max-w-post w-full'>
             <Header sidebar={showSidebar !== undefined} />
             <main className="min-h-screen py-4 px-4 md:px-1 pt-2 pb-8 w-full" style={{ direction: getMdDirection(data) }}>
                 {data.image && <img src={data.image} alt={data.title} className="w-full mb-4 rounded-md" />}
