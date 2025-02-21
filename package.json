@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
+    "lucide-react": "^0.471.0",
     "next": "^14.2.23",
     "next-auth": "^4.24.7",
     "next-mdx-remote": "^4.4.1",

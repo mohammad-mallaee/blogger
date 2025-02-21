@@ -46,4 +46,11 @@ export type Config = {
     content_entry: string,
     lang: string,
     metadata_base: string,
+    global_sidebar: boolean
+}
+
+export type SidebarData = {
+    name: string,
+    url: string,
+    children?: SidebarData[]
 }

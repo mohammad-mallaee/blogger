@@ -4,6 +4,7 @@ html {
   --on-background-stronger: #101010;
   --on-background-muted: #7a7a7a;
   --primary: #bc00eb;
+
   --outline: #dcdcdc;
 
   --code-bg: #f4f5f7;
@@ -12,6 +13,8 @@ html {
   --code-border-highlight: #009cd5db;
   --inlineCode-bg: #c3c0b554;
   --inlineCode-text: #1a1a1a;
+
+  --surface: #eee3f1;
 
   --link: #1f668c;
   --link-hover: #0994df;
@@ -31,6 +34,8 @@ html.dark {
   --code-border-highlight: #08a4a4db;
   --inlineCode-bg: #64646457;
   --inlineCode-text: #e5e3e3;
+
+  --surface: #1e1e20;
 
   --link: #609dcb;
   --link-hover: #40a9f9;
