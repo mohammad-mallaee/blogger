@@ -6,6 +6,7 @@ import './utils/extra.css'
 import config from '@/config'
 import Providers from './components/providers'
 import fonts from './utils/font'
+import GoogleAnalytics from './components/GoogleAnalytics'
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.site_url),
@@ -29,6 +30,7 @@ export default function RootLayout({
     : fonts.style.fontFamily
   return (
     <html lang="en" suppressHydrationWarning>
+      <GoogleAnalytics />
       <body className={'flex bg-background text-on-background justify-center gap-8'}
         style={{ fontFamily }}>
         <Providers>
