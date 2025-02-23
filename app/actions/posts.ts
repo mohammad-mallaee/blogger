@@ -39,7 +39,7 @@ export async function getLatestPosts({ recursive = false, path = "", self = fals
     return posts
 }
 
-export async function getPost(slug: string): Promise<{ content: string, data: PostData, components: any }> {
+export async function getPost(slug: string, fetchComponents = true): Promise<{ content: string, data: PostData, components: any }> {
     const markdown_index_path = join(config.content_entry, slug, 'index.md')
     const markdown_file_path = join(config.content_entry, slug + '.md')
     let isIndex = true
@@ -49,6 +49,10 @@ export async function getPost(slug: string): Promise<{ content: string, data: Po
             return await readFile(markdown_file_path)
         })
     const { content, data }: { content: string, data: any } = matter(fileData)
+
+    if (!fetchComponents)
+        return { content, data, components: {} }
+
     const componentsPath = isIndex ? join(slug, "components") : join(dirname(slug), "components")
     let components = {}
     try {

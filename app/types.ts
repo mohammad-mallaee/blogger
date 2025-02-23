@@ -21,7 +21,8 @@ export enum Theme {
 
 export type Author = string | {
     name: string,
-    url?: string
+    email?: string,
+    link?: string
 }
 
 export type NavLink = {
@@ -32,7 +33,7 @@ export type NavLink = {
 export type Config = {
     blog_name: string,
     description: string,
-    author?: string | Author,
+    author?: Author,
     authors?: Author[],
     theme: 'light' | 'dark' | 'system',
     direction: Direction,
@@ -45,7 +46,7 @@ export type Config = {
     },
     content_entry: string,
     lang: string,
-    metadata_base: string,
+    site_url: string,
     global_sidebar: boolean
 }
 
