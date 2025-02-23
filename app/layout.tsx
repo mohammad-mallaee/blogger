@@ -5,8 +5,7 @@ import './utils/variables.css'
 import './utils/extra.css'
 import config from '@/config'
 import Providers from './components/providers'
-import font from './utils/font'
-import clsx from 'clsx'
+import fonts from './utils/font'
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.metadata_base),
@@ -25,9 +24,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const fontFamily = Array.isArray(fonts)
+    ? fonts.map(f => f.style.fontFamily.split(",")[0]).join(", ")
+    : fonts.style.fontFamily
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={clsx('flex bg-background text-on-background justify-center gap-8', font.className)}>
+      <body className={'flex bg-background text-on-background justify-center gap-8'}
+        style={{ fontFamily }}>
         <Providers>
           {children}
         </Providers>
