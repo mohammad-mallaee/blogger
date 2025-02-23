@@ -3,6 +3,7 @@ const config = {
     description: 'Your favorite blog template',
     theme: 'system',
     logo: "/logo.png",
+    author: "Mohammad Mallaee",
     header: {
         nav_links: [],
         blog_name: true,
@@ -16,7 +17,7 @@ const config = {
     // These are default values for metadata base. If you have your domain,
     // you can either set it in environment variables or set it here.
     // These will be used for open graph images (sharing preview).
-    metadata_base: process.env.DOMAIN || `https://${process.env.VERCEL_URL}` || `http://localhost:${process.env.PORT || 3000}`
+    site_url: process.env.SITE_URL || "https://example.com"
 }
 
 module.exports = config;

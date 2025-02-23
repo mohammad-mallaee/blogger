@@ -8,7 +8,7 @@ import Providers from './components/providers'
 import fonts from './utils/font'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(config.metadata_base),
+  metadataBase: new URL(config.site_url),
   title: {
     default: config.blog_name,
     template: `%s | ${config.blog_name}`,
