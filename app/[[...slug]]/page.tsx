@@ -76,7 +76,7 @@ export default async function Page({ params }: { params: { slug: string | string
 }
 
 export async function generateStaticParams() {
-    const posts = await getAllPosts({ recursive: true, self: true })
+    const posts = await getAllPosts({ recursive: true, self: true, log: true })
     return posts.map((post: PostData) => ({
         slug: post.slug.split(path.sep).slice(1),
     }))

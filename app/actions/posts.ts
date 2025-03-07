@@ -4,11 +4,43 @@ import config from '../../config'
 import { join, dirname } from "path"
 import { PostData } from "../types"
 import { getEntries } from "./explorer";
+import { z } from "zod";
 
-function readMarkdownFile(path: string, slug: string) {
+const authorSchema = z.union([
+    z.string(),
+    z.object({
+        name: z.string(),
+        email: z.string().email().optional(),
+        link: z.string().url().optional(),
+    }),
+]);
+
+const frontmatterSchema = z.object({
+    title: z.string({ message: "invalid title" }),
+    spoiler: z.coerce.string().optional(),
+    keywords: z.coerce.string().optional(),
+    date: z.date().optional(),
+    image: z.string({ message: "invalide img url" }).optional(),
+    author: authorSchema.optional(),
+    authors: z.array(authorSchema).optional(),
+    language: z.string().regex(/^[a-z]{2}(-[A-Z]{2})?$/, "invalid language code").optional(),
+    dir: z.enum(["ltr", "rtl"], { message: "invalid document direction" }).optional(),
+}).refine((data) => !(data.author && data.authors), {
+    message: "both author and authors cannot be used",
+    path: ["author", "authors"],
+});
+
+function readPostData(path: string, slug: string, log: boolean = false) {
     return new Promise<PostData>((resolve, reject) => {
         readFile(path, 'utf-8').then(fileData => {
             const { data }: { data: any } = matter(fileData)
+            const result = frontmatterSchema.safeParse(data)
+            if (!result.success) {
+                if (log)
+                    console.error(`>> Error in ${path}: ${result.error.errors.map(e => e.message).join(" - ")}`)
+                reject(result.error)
+                return
+            }
             resolve({
                 slug: slug,
                 ...data
@@ -19,11 +51,13 @@ function readMarkdownFile(path: string, slug: string) {
     })
 }
 
-export async function getAllPosts({ recursive = false, path = "", self = false }) {
+export async function getAllPosts({ recursive = false, path = "", self = false, log = false }) {
     const entries = await getEntries({ recursive, path, self })
+    if (log)
+        console.log()
     const fileContentsResult = await Promise.all(
         entries.map(async (entry) => {
-            return readMarkdownFile(entry.path, entry.slug).catch(e => e)
+            return readPostData(entry.path, entry.slug, log).catch(e => e)
         })
     )
     return fileContentsResult.filter(result => !(result instanceof Error))
