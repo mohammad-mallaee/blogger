@@ -11,6 +11,8 @@ export type PostData = {
     image?: string,
     spoiler?: string,
     keywords?: string,
+    sidebar?: boolean,
+    sidebar_order?: number,
 }
 
 export enum Theme {

@@ -1,18 +1,19 @@
 'use client'
-import { SidebarData } from "@/app/types";
+import { Direction, SidebarData } from "@/app/types";
 import { useContext, useState } from "react";
 import SidebarContext from "./providers/sidebar";
-import { X, ChevronRight } from "lucide-react";
+import { X, ChevronRight, ChevronLeft } from "lucide-react";
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import path from "path";
 
 
-export default function Sidebar({ data }: { data: SidebarData[] }) {
+export default function Sidebar({ data, direction = "ltr" }: { data: SidebarData[], direction?: Direction }) {
     const context = useContext(SidebarContext)
     return <>
         <div className='my-20 top-8 self-start sticky max-h-screen overflow-scroll no-scrollbar w-full max-w-[280px] hidden xl:block'>
-            <Main data={data} />
+            <Main data={data} direction={direction} />
         </div>
         <div className={clsx("fixed top-0 lef-0 transition-opacity duration-300",
             context.isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none')}>
@@ -23,18 +24,21 @@ export default function Sidebar({ data }: { data: SidebarData[] }) {
                 <button className="block ml-auto mb-6 text-on-background-muted" onClick={() => context.close()}>
                     <X />
                 </button>
-                <Main data={data} />
+                <Main data={data} direction={direction} />
             </div>
         </div>
     </>
 }
 
-function Main({ data }: { data: SidebarData[] }) {
+function Main({ data, direction = "ltr" }: { data: SidebarData[], direction?: Direction }) {
     return <div className="flex flex-col gap-2 text-body font-medium text-on-background-muted">
         {data.map((item: SidebarData) => {
-            return <SidebarItem key={item.name} item={item}
+            return <SidebarItem key={item.url} item={item} direction={direction}
                 render={(children) => {
-                    return <div className="ml-4 -mt-1 mb-2 border-l py-1 px-2 gap-1 border-outline text-label flex flex-col text-on-background-muted">
+                    return <div className={clsx(
+                        "-mt-1 mb-2 py-1 px-2 gap-1 border-outline text-label flex flex-col text-on-background-muted",
+                        direction === "ltr" ? "border-l ml-4" : "border-r mr-4"
+                    )}>
                         {children}
                     </div>
                 }} />
@@ -42,26 +46,35 @@ function Main({ data }: { data: SidebarData[] }) {
     </div>
 }
 
-function SidebarItem({ item, render }: { item: SidebarData, render: (children: React.ReactNode) => React.ReactNode }) {
-    const pathname = usePathname()
+function SidebarItem({ item, direction = "ltr", render }:
+    { item: SidebarData, direction?: Direction, render: (children: React.ReactNode) => React.ReactNode }) {
+    const pathname = decodeURIComponent(usePathname())
     const [open, setOpen] = useState(pathname.startsWith(item.url))
     return <>
-        <div className={clsx("w-[280px] py-2 px-4 rounded",
+        <div className={clsx("w-full py-2 px-4 rounded",
             pathname === item.url && "bg-surface text-primary cursor-default")}>
             <div className="flex justify-between items-center">
-                <Link href={item.url} className="grow">{item.name}</Link>
+                <Link href={item.url} className="grow">{item.name || path.basename(item.url)}</Link>
                 {item.children &&
-                    <button className="border-l pl-3 border-outline cursor-pointer"
+                    <button
+                        className={clsx(
+                            "border-outline cursor-pointer",
+                            direction === "ltr" ? "pl-3 border-l" : "pr-3 border-r"
+                        )}
                         onClick={() => setOpen(prev => !prev)}>
-                        <ChevronRight width={20} height={20}
-                            className={clsx("transition-transform duration-300", open && "rotate-90")} />
+                        {direction === "ltr" ?
+                            <ChevronRight width={20} height={20}
+                                className={clsx("transition-transform duration-300", open && "rotate-90")} />
+                            : <ChevronLeft width={20} height={20}
+                                className={clsx("transition-transform duration-300", open && "-rotate-90")} />
+                        }
                     </button>
                 }
             </div>
         </div>
         {open && item.children &&
             render(item.children.map((item) => {
-                return <SidebarItem key={item.name} item={item}
+                return <SidebarItem key={item.url} item={item} direction={direction}
                     render={(children) => {
                         return <div className="text-label pl-2">
                             {children}

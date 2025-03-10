@@ -51,7 +51,7 @@ function readPostData(path: string, slug: string, log: boolean = false) {
     })
 }
 
-export async function getAllPosts({ recursive = false, path = "", self = false, log = false }) {
+export async function getAllPosts({ recursive = false, path = "", self = false, log = false }): Promise<PostData[]> {
     const entries = await getEntries({ recursive, path, self })
     if (log)
         console.log()

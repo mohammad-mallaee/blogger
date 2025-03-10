@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <GoogleAnalytics />
-      <body className={'flex bg-background text-on-background justify-center gap-8'}
+      <body className={'bg-background text-on-background'}
         style={{ fontFamily }}>
         <Providers>
           {children}
