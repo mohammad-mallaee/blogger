@@ -4,11 +4,11 @@ import config from "@/config.blog";
 export async function getPagesWithSidebar() {
     const entries = await getAllPosts({ recursive: true, path: "/", self: true })
     const result = entries.reduce((acc, curr) => {
-        if (curr?.sidebar === true)
+        if (curr.sidebar === true) {
             return [...acc, curr.slug]
-        else
-            return acc
-    }, [])
+        }
+        return acc
+    }, [] as string[])
     return result
 }
 
@@ -23,7 +23,7 @@ export async function getSidebarData(slug = "/"): Promise<any> {
             url: entry.slug,
             name: entry.title,
             children: data,
-            order: entry.sidebar_order
+            order: entry.sidebar_order || Infinity
         })
     }
     result.sort((a, b) => {
