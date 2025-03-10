@@ -115,3 +115,8 @@ ol {
 .markdown img {
   @apply max-w-full mb-2;
 }
+
+.markdown.rtl em,
+.markdown.rtl strong {
+  unicode-bidi: normal;
+}

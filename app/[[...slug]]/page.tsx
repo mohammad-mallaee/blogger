@@ -9,12 +9,13 @@ import path from "path";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import { getSidebarData, hasSidebar } from "../actions/sidebar";
+import clsx from "clsx";
 
 export async function generateMetadata({ params }: { params: { slug: string | string[] } }) {
     if (params.slug === undefined)
         params.slug = ""
     else if (Array.isArray(params.slug))
-        params.slug = params.slug.join(path.sep)
+        params.slug = decodeURIComponent(params.slug.join(path.sep))
 
     const { data } = await getPost(params.slug).catch(() => notFound())
 
@@ -36,7 +37,7 @@ export default async function Page({ params }: { params: { slug: string | string
     if (params.slug === undefined)
         params.slug = ""
     if (Array.isArray(params.slug))
-        params.slug = params.slug.join(path.sep)
+        params.slug = decodeURIComponent(params.slug.join(path.sep))
 
     const { data, content, components } = await getPost(params.slug).catch(() => { notFound() })
     const showSidebar = await hasSidebar("/" + params.slug)
@@ -44,13 +45,15 @@ export default async function Page({ params }: { params: { slug: string | string
     if (showSidebar)
         sidebarData = await getSidebarData(showSidebar)
 
-    return <>
+    const direction = getMdDirection(data)
+
+    return <div className="flex justify-center gap-8" style={{ direction }}>
         {showSidebar &&
-            <Sidebar data={sidebarData} />
+            <Sidebar data={sidebarData} direction={direction}/>
         }
         <div className='flex flex-col items-center grow max-w-post w-full'>
             <Header sidebar={showSidebar !== undefined} />
-            <main className="min-h-screen py-4 px-4 md:px-1 pt-2 pb-8 w-full" style={{ direction: getMdDirection(data) }}>
+            <main className="min-h-screen py-4 px-4 md:px-1 pt-2 pb-8 w-full">
                 {data.image && <img src={data.image} alt={data.title} className="w-full mb-4 rounded-md" />}
                 {(data.title || data.date) &&
                     <div className={(data.image ? "mb-2" : "my-6")}>
@@ -66,18 +69,18 @@ export default async function Page({ params }: { params: { slug: string | string
                         }
                     </div>
                 }
-                <article className="markdown">
+                <article className={clsx("markdown", direction === "rtl" && "rtl")}>
                     <Markdown source={content} components={components} />
                 </article>
             </main >
         </div>
         {showSidebar && <div className="w-[280px] hidden xl:block"></div>}
-    </>
+    </div>
 }
 
 export async function generateStaticParams() {
     const posts = await getAllPosts({ recursive: true, self: true, log: true })
     return posts.map((post: PostData) => ({
-        slug: post.slug.split(path.sep).slice(1),
+        slug: post.slug.split(path.sep).slice(1).map(s => encodeURIComponent(s)),
     }))
 }
