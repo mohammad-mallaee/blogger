@@ -49,7 +49,7 @@ export default async function Page({ params }: { params: { slug: string | string
 
     return <div className="flex justify-center gap-8" style={{ direction }}>
         {showSidebar &&
-            <Sidebar data={sidebarData} direction={direction}/>
+            <Sidebar data={sidebarData} direction={direction} />
         }
         <div className='flex flex-col items-center grow max-w-post w-full'>
             <Header sidebar={showSidebar !== undefined} />
@@ -80,7 +80,11 @@ export default async function Page({ params }: { params: { slug: string | string
 
 export async function generateStaticParams() {
     const posts = await getAllPosts({ recursive: true, self: true, log: true })
-    return posts.map((post: PostData) => ({
-        slug: post.slug.split(path.sep).slice(1).map(s => encodeURIComponent(s)),
+    if (process.env.NODE_ENV === "development")
+        return posts.map((post: PostData) => ({
+            slug: post.slug.split(path.sep).slice(1).map(encodeURIComponent)
+        }))
+    else return posts.map((post: PostData) => ({
+        slug: post.slug.split(path.sep).slice(1)
     }))
 }
