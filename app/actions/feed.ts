@@ -1,6 +1,6 @@
 import config from '@/config'
 import { Feed } from 'feed'
-import { join } from 'path'
+import { basename, join } from 'path'
 import { getLatestPosts, getPost } from './posts'
 
 const feedOptions = {
@@ -26,7 +26,7 @@ export async function generateFeed() {
     for (const post of posts) {
         const data = await getPost(post.slug, false)
         feed.addItem({
-            title: post.title,
+            title: post.title || basename(post.slug),
             id: post.slug,
             link: join(config.site_url, post.slug),
             description: post.spoiler || "",

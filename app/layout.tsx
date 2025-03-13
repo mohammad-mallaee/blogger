@@ -30,7 +30,10 @@ export default function RootLayout({
     : fonts.style.fontFamily
   return (
     <html lang="en" suppressHydrationWarning>
-      <GoogleAnalytics />
+      <head>
+        <GoogleAnalytics />
+        <link rel="icon" type="image/svg+xml" href={config.logo} />
+      </head>
       <body className={'bg-background text-on-background'}
         style={{ fontFamily }}>
         <Providers>

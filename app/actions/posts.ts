@@ -16,7 +16,7 @@ const authorSchema = z.union([
 ]);
 
 const frontmatterSchema = z.object({
-    title: z.string({ message: "invalid title" }),
+    title: z.string({ message: "invalid title" }).optional(),
     spoiler: z.coerce.string().optional(),
     keywords: z.coerce.string().optional(),
     date: z.date().optional(),
@@ -30,7 +30,7 @@ const frontmatterSchema = z.object({
     path: ["author", "authors"],
 });
 
-function readPostData(path: string, slug: string, log: boolean = false) {
+export function readPostData(path: string, slug: string, log: boolean = false) {
     return new Promise<PostData>((resolve, reject) => {
         readFile(path, 'utf-8').then(fileData => {
             const { data }: { data: any } = matter(fileData)

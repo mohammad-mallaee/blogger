@@ -53,6 +53,7 @@ export type Config = {
 }
 
 export type SidebarData = {
+    slug: string,
     name: string,
     url: string,
     children?: SidebarData[]
