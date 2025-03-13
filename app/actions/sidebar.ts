@@ -39,8 +39,9 @@ export async function getSidebarData(slug: string): Promise<any> {
         result.push({
             slug: s,
             url: s,
+            order: data.sidebar_order || Infinity,
             name: data.title || file.name.replace(".md", ""),
-            children: null
+            children: null,
         })
     }
     for (const dir of dirs) {
@@ -51,10 +52,14 @@ export async function getSidebarData(slug: string): Promise<any> {
             result.push({
                 slug: join(slug, dir.name),
                 url: data ? join(slug, dir.name) : null,
+                order: data ? data.sidebar_order || Infinity : Infinity,
                 name: data ? data.title || dir.name : dir.name,
                 children: children
             })
     }
+    result.sort((a, b) => {
+        return a.order - b.order
+    })
     return result.length === 0 ? null : result
 }
 
