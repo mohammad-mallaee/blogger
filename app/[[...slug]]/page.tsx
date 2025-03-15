@@ -47,13 +47,13 @@ export default async function Page({ params }: { params: { slug: string | string
 
     const direction = getMdDirection(data)
 
-    return <div className="flex justify-center gap-8" style={{ direction }}>
+    return <div className="flex justify-center gap-12" style={{ direction: config.direction }}>
         {showSidebar &&
-            <Sidebar data={sidebarData} direction={direction} />
+            <Sidebar data={sidebarData} direction={config.direction} />
         }
         <div className='flex flex-col items-center grow max-w-post w-full'>
             <Header sidebar={showSidebar !== undefined} />
-            <main className="min-h-screen py-4 px-4 md:px-1 pt-2 pb-8 w-full">
+            <main className="min-h-screen py-4 px-4 md:px-1 pt-2 pb-8 w-full" style={{ direction }}>
                 {data.image && <img src={data.image} alt={data.title} className="w-full mb-4 rounded-md" />}
                 {(data.title || data.date) &&
                     <div className={(data.image ? "mb-2" : "my-6")}>
@@ -74,7 +74,7 @@ export default async function Page({ params }: { params: { slug: string | string
                 </article>
             </main >
         </div>
-        {showSidebar && <div className="w-[280px] hidden xl:block"></div>}
+        {showSidebar && <div className="w-[260px] hidden xl:block"></div>}
     </div>
 }
 

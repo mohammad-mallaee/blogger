@@ -8,8 +8,8 @@ const PostCard = async ({ post }: { post: string | PostData }) => {
     let data = typeof post === 'string' ? { ...(await getPost(post)).data, slug: post } : post
     return (
         <Link className={clsx(
-            'group flex rounded-[4px] gap-4 ease-in-out transition-all bg-slate-100 dark:bg-surface',
-            'my-2 hover:border-gray-600 border border-stone-300 dark:border-stone-700',
+            'group flex rounded-[4px] gap-4 ease-in-out transition-all bg-surface',
+            'my-2 hover:border-gray-400 border border-stone-300 dark:border-stone-700',
             data.image ? 'p-2' : 'px-4 py-2'
         )}
             style={{ direction: getMdDirection(data), textDecoration: "none" }}
@@ -31,7 +31,7 @@ const PostCard = async ({ post }: { post: string | PostData }) => {
                     </div>
                 }
                 {data.spoiler &&
-                    <div className='text-gray-600 dark:text-gray-400 text-[15px] sm:text-[16px] mt-2 leading-5 text-on-background line-clamp-2'>
+                    <div className='text-slate-500 dark:text-gray-400 text-[15px] sm:text-[16px] mt-2 leading-5 text-on-background line-clamp-2'>
                         {data.spoiler}
                     </div>
                 }

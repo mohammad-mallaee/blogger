@@ -25,6 +25,7 @@ const config: Config = {
         'inlineCode-text': 'var(--inlineCode-text)',
         'link': 'var(--link)',
         'link-hover': 'var(--link-hover)',
+        'sidebar-active': 'var(--sidebar-active)',
       },
       maxWidth: {
         "post": 'var(--max-post-width)',
