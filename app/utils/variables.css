@@ -1,7 +1,7 @@
 html {
-    --max-post-width: 740px;
-    --logo-size: 2.75rem;
-    --logo-small-size: 2rem;
+    --max-post-width: 720px;
+    --logo-size: 2.25rem;
+    --logo-size-sm: 2rem;
 
     --font-body: 1.0625rem;
     --font-label: 1rem;

@@ -23,7 +23,7 @@ export default function Header({ sidebar }: { sidebar: boolean }) {
             }
             <Link className={["text-name-sm sm:text-name flex font-bold items-center gap-2 md:gap-3", pathname === '/' ? "" : "text-on-background-muted"].join(" ")}
                 href={'/'}>
-                {config.header.logo && <img className="w-logo h-logo sm:w-logo sm:h-logo" src={config.logo} alt="logo" />}
+                {config.header.logo && <img className="h-logo-sm md:h-logo" src={config.logo} alt="logo" />}
                 {config.header.blog_name && config.blog_name}
             </Link>
         </div>

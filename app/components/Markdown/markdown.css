@@ -36,7 +36,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 .markdown {
-  @apply text-body leading-[1.625rem];
+  @apply text-body;
 }
 
 .markdown * {
@@ -60,27 +60,28 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 .markdown h1 {
-  @apply mt-4 text-h1 font-medium text-on-background-stronger;
+  @apply mt-4 mb-1 text-h1 font-medium text-on-background-stronger;
 }
 
 .markdown h2 {
-  @apply mt-4 text-h2 font-medium text-on-background-stronger;
+  @apply mt-4 mb-1 text-h2 font-medium text-on-background-stronger;
 }
 
 .markdown h3 {
-  @apply mt-4 text-h3 font-medium text-on-background-stronger;
+  @apply mt-4 mb-1 text-h3 font-medium text-on-background-stronger;
 }
 
 .markdown h4 {
-  @apply mt-4 text-h4 font-normal;
+  @apply mt-4 mb-1 text-h4 font-normal;
 }
 
 .markdown pre {
+  direction: ltr;
   @apply my-2 overflow-y-auto pl-4 text-sm border border-outline leading-6 rounded-md py-3 bg-code-bg;
 }
 
 .markdown pre code {
-  @apply text-on-code
+  @apply text-on-code;
 }
 
 .markdown pre code span {
@@ -113,10 +114,19 @@ ol {
 }
 
 .markdown img {
-  @apply max-w-full mb-2;
+  @apply max-w-full mb-2 mt-1;
+}
+
+.markdown details {
+  @apply bg-surface rounded-sm border border-outline px-4 mt-2;
+}
+
+.markdown details summary {
+  @apply cursor-pointer py-2;
 }
 
 .markdown.rtl em,
-.markdown.rtl strong {
+.markdown.rtl strong,
+.markdown.rtl a {
   unicode-bidi: normal;
 }
