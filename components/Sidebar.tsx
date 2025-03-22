@@ -1,5 +1,5 @@
 'use client'
-import { Direction, SidebarData } from "@/app/types";
+import { Direction, SidebarData } from "@/types";
 import { useContext, useState } from "react";
 import SidebarContext from "./providers/sidebar";
 import { X, ChevronRight, ChevronLeft } from "lucide-react";

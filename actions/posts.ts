@@ -1,8 +1,8 @@
 import { readFile } from "fs/promises";
 import matter from "gray-matter";
-import config from '../../config'
+import config from '@/config'
 import { join, dirname } from "path"
-import { PostData } from "../types"
+import { PostData } from "@/types"
 import { getEntries } from "./explorer";
 import { z } from "zod";
 
@@ -90,7 +90,7 @@ export async function getPost(slug: string, fetchComponents = true): Promise<{ c
     const componentsPath = isIndex ? join(slug, "components") : join(dirname(slug), "components")
     let components = {}
     try {
-        components = await import(`../../public/${componentsPath}.js`)
+        components = await import(`../public/${componentsPath}.js`)
     } catch (e: any) {
         if (!e || e.code !== "MODULE_NOT_FOUND") {
             throw e

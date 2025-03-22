@@ -1,4 +1,4 @@
-import { generateFeed } from "../actions/feed"
+import { generateFeed } from "@/actions/feed"
 
 export async function GET() {
     const feed = await generateFeed()

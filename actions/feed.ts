@@ -1,20 +1,20 @@
 import config from '@/config'
 import { Feed } from 'feed'
 import { basename, join } from 'path'
-import { getLatestPosts, getPost } from './posts'
+import { getLatestPosts } from './posts'
 
 const feedOptions = {
-    title: `${config.blog_name} feed`,
+    title: config.blog_name,
     description: config.description,
     id: config.site_url,
     link: config.site_url,
     language: config.lang,
-    image: config.logo,
+    image: new URL(config.logo, config.site_url).href,
     favicon: config.lang,
     copyright: "All rights reserved",
     feedLinks: {
-        atom: join(config.site_url, "atom.xml"),
-        rss: join(config.site_url, "rss.xml")
+        atom: new URL("atom.xml", config.site_url).href,
+        rss: new URL("rss.xml", config.site_url).href
     },
     author: typeof config.author === 'string' ? { name: config.author } : config.author
 }
@@ -24,15 +24,13 @@ export async function generateFeed() {
     let posts = await getLatestPosts({ recursive: true, self: true })
     posts = posts.slice(0, 20)
     for (const post of posts) {
-        const data = await getPost(post.slug, false)
         feed.addItem({
             title: post.title || basename(post.slug),
             id: post.slug,
-            link: join(config.site_url, post.slug),
+            link: new URL(post.slug, config.site_url).href,
             description: post.spoiler || "",
             date: post.date ? new Date(post.date) : new Date(),
-            image: post.image ? join(config.site_url, post.image) : undefined,
-            content: data.content,
+            image: post.image ? new URL(post.image, config.site_url).href : undefined,
         })
     }
     return feed

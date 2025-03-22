@@ -1,7 +1,7 @@
 import Link from "next/link"
-import { PostData } from "../types"
-import { getMdDirection, getMdLanguage } from "../actions/mdProperties"
-import { getPost } from "../actions/posts"
+import { PostData } from "@/types"
+import { getMdDirection, getMdLanguage } from "@/actions/mdProperties"
+import { getPost } from "@/actions/posts"
 import clsx from "clsx"
 
 const PostCard = async ({ post }: { post: string | PostData }) => {

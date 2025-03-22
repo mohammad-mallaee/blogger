@@ -1,21 +1,19 @@
 import type { Metadata } from 'next'
-import './globals.css'
-import './utils/colors.css'
-import './utils/variables.css'
-import './utils/extra.css'
+import '../utils/globals.css'
+import '../utils/colors.css'
+import '../utils/variables.css'
+import '../utils/extra.css'
 import config from '@/config'
-import Providers from './components/providers'
-import fonts from './utils/font'
-import GoogleAnalytics from './components/GoogleAnalytics'
+import Providers from '@/components/providers'
+import fonts from '../utils/font'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
+import Head from 'next/head'
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.site_url),
   title: {
     default: config.blog_name,
     template: `%s | ${config.blog_name}`,
-  },
-  icons: {
-    icon: '/logo.png',
   },
   description: config.description
 }
@@ -30,10 +28,10 @@ export default function RootLayout({
     : fonts.style.fontFamily
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      <Head>
         <GoogleAnalytics />
-        <link rel="icon" type="image/svg+xml" href={config.logo} />
-      </head>
+        <link rel="icon" href="/logo.png" />
+      </Head>
       <body className={'bg-background text-on-background'}
         style={{ fontFamily }}>
         <Providers>

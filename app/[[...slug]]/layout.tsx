@@ -1,4 +1,4 @@
-import ErrorBoundary from '@/app/components/ErrorBoundary'
+import ErrorBoundary from '@/components/ErrorBoundary'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (

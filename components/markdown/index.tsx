@@ -4,7 +4,7 @@ import rehypePrettyCode from "rehype-pretty-code"
 import rehypeKatex from "rehype-katex"
 import 'katex/dist/katex.min.css'
 import remarkMath from "remark-math"
-import PostCard from "../PostCard"
+import PostCard from "../article/PostCard"
 
 export default function Markdown({ source, components }: { source: string, components: any }) {
     return <MDXRemote
