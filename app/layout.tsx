@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <Head>
         <GoogleAnalytics />
-        <link rel="icon" href="/logo.png" />
+        <link rel="icon" href={config.logo} />
       </Head>
       <body className={'bg-background text-on-background'}
         style={{ fontFamily }}>
