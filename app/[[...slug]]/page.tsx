@@ -1,14 +1,14 @@
-import { getAllPosts, getPost } from "@/app/actions/posts"
+import { getAllPosts, getPost } from "@/actions/posts"
 import { notFound } from "next/navigation"
-import Markdown from "@/app/components/Markdown/Markdown"
+import Markdown from "@/components/markdown"
 
-import { getMdAuthors, getMdDirection, getMdLanguage } from "@/app/actions/mdProperties";
+import { getMdAuthors, getMdDirection, getMdLanguage } from "@/actions/mdProperties";
 import config from "@/config";
-import { PostData } from "../types";
+import { PostData } from "../../types";
 import path from "path";
-import Sidebar from "../components/Sidebar";
-import Header from "../components/Header";
-import { getSidebarData, hasSidebar } from "../actions/sidebar";
+import Sidebar from "@/components/Sidebar";
+import Header from "@/components/Header";
+import { getSidebarData, hasSidebar } from "@/actions/sidebar";
 import clsx from "clsx";
 
 export async function generateMetadata({ params }: { params: { slug: string | string[] } }) {
@@ -88,3 +88,5 @@ export async function generateStaticParams() {
         slug: post.slug.split(path.sep).slice(1)
     }))
 }
+
+export const dynamicParams = process.env.NODE_ENV === "development"
