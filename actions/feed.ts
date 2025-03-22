@@ -1,6 +1,6 @@
 import config from '@/config'
 import { Feed } from 'feed'
-import { basename, join } from 'path'
+import { basename } from 'path'
 import { getLatestPosts } from './posts'
 
 const feedOptions = {
@@ -10,7 +10,7 @@ const feedOptions = {
     link: config.site_url,
     language: config.lang,
     image: new URL(config.logo, config.site_url).href,
-    favicon: config.lang,
+    favicon: config.logo,
     copyright: "All rights reserved",
     feedLinks: {
         atom: new URL("atom.xml", config.site_url).href,
