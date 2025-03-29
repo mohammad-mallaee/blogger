@@ -8,27 +8,31 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 
-export default function Sidebar({ data, direction = "ltr" }: { data: SidebarData[], direction?: Direction }) {
+export default function Sidebar({ data, show, direction = "ltr" }: { data: SidebarData[], show: boolean, direction?: Direction }) {
     const context = useContext(SidebarContext)
     return <>
         <div className='top-8 pb-12 self-start sticky max-h-screen overflow-scroll no-scrollbar w-full max-w-[260px] hidden xl:block'>
-            <Main data={data} direction={direction} />
-        </div>
-        <div className={clsx("fixed top-0 lef-0 transition-opacity duration-300",
-            context.isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none')}>
-            <div className="fixed inset-0 bg-black/50 transition-opacity duration-300"
-                onClick={() => context.close()}></div>
-            <div className={clsx(
-                context.isOpen ? 'translate-x-0' : direction === "rtl" ? 'translate-x-full' : "-translate-x-full",
-                direction === "rtl" ? 'right-0' : 'left-0',
-                "fixed top-0 z-10 h-screen max-h-screen overflow-scroll no-scrollbar w-full max-w-[320px] xl:hidden bg-background px-4 pb-8 pt-4 transform transition-transform duration-300"
-            )}>
-                <button className="block ml-auto mb-6 text-on-background-muted" onClick={() => context.close()}>
-                    <X />
-                </button>
+            {show &&
                 <Main data={data} direction={direction} />
-            </div>
+            }
         </div>
+        {show &&
+            <div className={clsx("fixed top-0 lef-0 transition-opacity duration-300",
+                context.isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none')}>
+                <div className="fixed inset-0 bg-black/50 transition-opacity duration-300"
+                    onClick={() => context.close()}></div>
+                <div className={clsx(
+                    context.isOpen ? 'translate-x-0' : direction === "rtl" ? 'translate-x-full' : "-translate-x-full",
+                    direction === "rtl" ? 'right-0' : 'left-0',
+                    "fixed top-0 z-10 h-screen max-h-screen overflow-scroll no-scrollbar w-full max-w-[320px] xl:hidden bg-background px-4 pb-8 pt-4 transform transition-transform duration-300"
+                )}>
+                    <button className="block ml-auto mb-6 text-on-background-muted" onClick={() => context.close()}>
+                        <X />
+                    </button>
+                    <Main data={data} direction={direction} />
+                </div>
+            </div>
+        }
     </>
 }
 
