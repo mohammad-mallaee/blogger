@@ -13,6 +13,7 @@ export type PostData = {
     keywords?: string,
     sidebar?: boolean,
     sidebar_order?: number,
+    table_of_contents?: boolean
 }
 
 export enum Theme {
@@ -49,7 +50,8 @@ export type Config = {
     content_entry: string,
     lang: string,
     site_url: string,
-    global_sidebar: boolean
+    global_sidebar: boolean,
+    table_of_contents: boolean
 }
 
 export type SidebarData = {
