@@ -10,6 +10,7 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import { getSidebarData, hasSidebar } from "@/actions/sidebar";
 import clsx from "clsx";
+import TableOfContent from "@/components/TableOfContent";
 
 export async function generateMetadata({ params }: { params: { slug: string | string[] } }) {
     if (params.slug === undefined)
@@ -40,19 +41,20 @@ export default async function Page({ params }: { params: { slug: string | string
         params.slug = decodeURIComponent(params.slug.join(path.sep))
 
     const { data, content, components } = await getPost(params.slug).catch(() => { notFound() })
-    const showSidebar = await hasSidebar("/" + params.slug)
+    const sidebarSlug = await hasSidebar("/" + params.slug)
+    const showSidebar = sidebarSlug !== undefined
     let sidebarData = null
-    if (showSidebar)
-        sidebarData = await getSidebarData(showSidebar)
+    if (sidebarSlug)
+        sidebarData = await getSidebarData(sidebarSlug)
 
     const direction = getMdDirection(data)
 
+    const { content: article, tableOfContent } = await Markdown({ source: content, components })
+
     return <div className="flex justify-center gap-12" style={{ direction: config.direction }}>
-        {showSidebar &&
-            <Sidebar data={sidebarData} direction={config.direction} />
-        }
+        <Sidebar data={sidebarData} show={showSidebar} direction={config.direction} />
         <div className='flex flex-col items-center grow max-w-post w-full'>
-            <Header sidebar={showSidebar !== undefined} />
+            <Header sidebar={showSidebar} />
             <main className="min-h-screen py-4 px-4 md:px-1 pt-2 pb-8 w-full" style={{ direction }}>
                 {data.image && <img src={data.image} alt={data.title} className="w-full mb-4 rounded-md" />}
                 {(data.title || data.date) &&
@@ -70,11 +72,11 @@ export default async function Page({ params }: { params: { slug: string | string
                     </div>
                 }
                 <article className={clsx("markdown", direction === "rtl" && "rtl")}>
-                    <Markdown source={content} components={components} />
+                    {article}
                 </article>
             </main >
         </div>
-        {showSidebar && <div className="w-[260px] hidden xl:block"></div>}
+        <TableOfContent data={tableOfContent} show={data.table_of_contents || config.table_of_contents} />
     </div>
 }
 
