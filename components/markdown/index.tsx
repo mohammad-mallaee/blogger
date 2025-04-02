@@ -7,6 +7,7 @@ import remarkMath from "remark-math"
 import PostCard from "../article/PostCard"
 import remarkTableOfContent from "./toc"
 import Heading from "./heading"
+import Link from "next/link"
 
 export default async function Markdown({ source, components }: { source: string, components: any }) {
     let tableOfContent;
@@ -17,6 +18,7 @@ export default async function Markdown({ source, components }: { source: string,
             h1: (props) => <Heading depth={1} {...props} />,
             h2: (props) => <Heading depth={2} {...props} />,
             h3: (props) => <Heading depth={3} {...props} />,
+            a: (props: any) => <Link {...props} />,
         },
         options: {
             mdxOptions: {
